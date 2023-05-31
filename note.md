@@ -36,3 +36,46 @@
 1. git add .
 2. git commit -m 'Noi dung'
 3. git push
+4. git pull => Lấy code mới về
+
+# HTML
+
+## Phân loại thẻ
+
+- Thẻ đủ: Có cả mở và đóng thẻ
+- Thẻ rỗng: Chỉ có mở thẻ
+
+## Nhóm thẻ
+
+### Block
+
+- Width mặc định = 100%
+- Mỗi thẻ nằm trên 1 dòng
+
+### Inline
+
+- Width mặc định bằng nội dung của thẻ
+- Các thẻ liên tiếp nhau nằm trên 1 dòng
+
+## Cấu trúc trang html
+
+- head: Chứa các thẻ meta, tiêu đề, liên kết css, js
+- body: Nội dung của trang web
+
+## Cấu tạo chung của thẻ html
+
+- Thẻ block không cần quan tâm đến thuộc tính (Không phải tất cả)
+- Tất cả các thẻ html sẽ có 2 thuộc tính mặc định: class, id (Dùng để định danh bên css)
+- Mỗi thẻ html sẽ có css mặc định của trình duyệt nhưng độ ưu tiên thấp
+
+## Các thẻ html 5
+
+- header
+- footer
+- main
+- nav
+- section
+- article
+- aside
+- figure và figcaption
+- time
