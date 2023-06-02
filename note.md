@@ -79,3 +79,71 @@
 - aside
 - figure và figcaption
 - time
+
+## Thẻ chèn liên kết (a = anchor)
+
+<a href="link">Text</a>
+
+`#` => Hash => Phía client
+
+target
+
+- `_blank` => mở tab mới
+- `_self` => mở tab hiện tại
+
+## Thẻ chèn hình ảnh (img = image)
+
+- <img src="link ảnh" width="chiều rộng" height="chiều cao"  title="Tiêu đề" alt="Chữ thay thế"/>
+
+Đường dẫn tương đối (relative path): Chỉ ở cấp folder con
+
+Đường dẫn tuyệt đối (absolute path): Đầy đủ cả giao thức và đường dẫn
+
+http://tenmien/duong-dan
+
+protocol + domain:port/path
+
+## Table
+
+- Vẽ theo hàng ngang
+- Vẽ hàng trước, cột sau
+
+Thẻ table => Tạo bảng
+
+- width: Chiều rộng
+- border: Viền
+- cellpadding: Khoảng cách giữa viền tới nội dung của các ô
+- cellspacing: Khoảng cách giữa các ô (lề)
+
+Thẻ tr => Tạo hàng cho bảng
+
+Thẻ td => tạo cột cho bảng (Nằm trong thẻ tr)
+
+## Form: Biểu mẫu
+
+- 1 trang web sẽ có nhiều form
+- form đứng ngang hàng, không lồng nhau
+- 1 form bao gồm nhiều trường (field)
+
+`<form method="phuong-thuc" action="duong-dan">
+Các trường
+
+</form>`
+
+Các trường trong form
+
+1. Thẻ input
+
+- type: Kiểu dữ liệu (Default = text)
+- name: Tên trường để lấy dữ liệu (back-end)
+- class, id
+- placeholder: Chữ chìm gợi ý
+- value: Giá trị của input
+- disabled: Vô hiệu hóa trường
+- readonly: Chỉ cho phép xem, không nhập được
+- required: Bắt buộc phải nhập khi submit form
+
+2. Thẻ label
+
+- Thể hiện 1 dòng chữ mô tả cho trường
+- <label for="id của field">Nội dung</label>

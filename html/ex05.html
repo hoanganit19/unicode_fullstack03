@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="post">
+      <div>
+        <label for="lbl_name">Tên</label> <br />
+        <input
+          type="text"
+          name="name"
+          placeholder="Name..."
+          value=""
+          id="lbl_name"
+        />
+      </div>
+
+      <div>
+        <label for="lbl_email">Email</label> <br />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email..."
+          value=""
+          id="lbl_email"
+        />
+      </div>
+
+      <div>
+        <label for="password">Mật khẩu</label> <br />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password..."
+          value=""
+          id="password"
+        />
+      </div>
+
+      <div>
+        <label for="lbl_age">Tuổi</label> <br />
+        <input
+          type="number"
+          name="age"
+          placeholder="Tuổi..."
+          value=""
+          id="lbl_age"
+          min="16"
+          max="40"
+          step="0.1"
+        />
+      </div>
+
+      <div>
+        <label for="lbl_search">Tìm kiếm</label> <br />
+        <input
+          type="search"
+          name="search"
+          placeholder="Search..."
+          value=""
+          id="lbl_search"
+        />
+      </div>
+
+      <div>
+        <label for="lbl_website">Website</label> <br />
+        <input
+          type="url"
+          name="website"
+          placeholder="Website..."
+          value=""
+          id="lbl_website"
+        />
+      </div>
+      <div>
+        <label for="lbl_birthday">Sinh nhật</label> <br />
+        <input type="date" name="birthday" value="" id="lbl_birthday" />
+      </div>
+
+      <div>
+        <label for="lbl_avatar">Avatar</label> <br />
+        <input type="file" name="avatar" value="" id="lbl_avatar" />
+      </div>
+
+      <div>
+        <label>Giới tính</label> <br />
+        <label>
+          <input type="radio" name="gender" value="0" /> Không xác định
+        </label>
+        <label>
+          <input type="radio" name="gender" value="1" checked /> Nam
+        </label>
+        <label> <input type="radio" name="gender" value="2" /> Nữ </label>
+      </div>
+
+      <div>
+        <label>Sở thích</label> <br />
+        <label> <input type="checkbox" name="" value="0" /> Sở thích 1 </label>
+        <label> <input type="checkbox" name="" value="1" /> Sở thích 2 </label>
+        <label> <input type="checkbox" name="" value="2" /> Sở thích 3 </label>
+      </div>
+
+      <div>
+        <label for="lbl_message">Nội dung</label> <br />
+        <textarea
+          name="message"
+          placeholder="Nội dung..."
+          rows="5"
+          cols="20"
+        ></textarea>
+      </div>
+
+      <div>
+        <label for="lbl_provinces">Tỉnh/TP</label> <br />
+        <select name="provinces" id="">
+          <option value="" hidden>Chọn Tỉnh/TP</option>
+          <optgroup label="Miền bắc">
+            <option value="1">Hà Nội</option>
+            <option value="1">Bắc giang</option>
+          </optgroup>
+
+          <optgroup label="Miền trung">
+            <option value="2">Đà nẵng</option>
+          </optgroup>
+          <optgroup label="Miền Nam">
+            <option value="3" selected>Hồ Chí Minh</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <button type="submit">Submit</button>
+      <button type="button">Button</button>
+      <button type="reset">Reset</button>
+    </form>
+  </body>
+</html>
