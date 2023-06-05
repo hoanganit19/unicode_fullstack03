@@ -1,0 +1,23 @@
+body{
+    color: red;
+}
+
+p{
+    color: rgba(6, 236, 63, 0.519);
+}
+
+.content{
+    color: blue;
+}
+
+p:nth-child(2){
+    color: initial;
+}
+
+p:nth-child(3){
+    color: inherit;
+}
+
+.content p:nth-child(2){
+    color: unset;
+}

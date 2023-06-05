@@ -147,3 +147,32 @@ Các trường trong form
 
 - Thể hiện 1 dòng chữ mô tả cho trường
 - <label for="id của field">Nội dung</label>
+
+# CSS
+
+## Đặt tên id, class
+
+- Tường minh (Theo chức năng nhiệm vụ)
+- Nên dùng Tiếng Anh (Đúng chính tả, chuẩn số ít, số nhiều)
+- Viết thường, sử dụng gạch ngang, không nên dùng số
+- Nên bắt đầu bằng chữ cái
+- Cháp nhận: chữ cái thường, dấu gạch dưới, gạch ngang, số
+- Không được phép bắt đầu bằng số
+- Sử dụng danh từ
+
+Lưu ý:
+
+- id trong 1 thẻ html chỉ có 1
+- class trong 1 thẻ html sẽ có nhiều (Mỗi class sẽ cách nhau bởi khoảng trắng)
+
+Nguyên tắc với selector ~
+
+- Cùng cấp
+- Nằm trong 1 cha
+- Không phân biệt thứ tự liền sau
+
+## Các giá trị mặc định trong CSS
+
+- inherit
+- initial
+- unset

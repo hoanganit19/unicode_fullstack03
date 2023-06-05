@@ -1,0 +1,24 @@
+h1.first.title{
+    color: red;
+}
+
+h2.last.title{
+    color: blue;
+}
+
+.content p ~ ul{
+    background: green;
+    color: #fff;
+}
+
+.content p ~ .children ul{
+    background: green;
+}
+
+.menu li + li a{
+    color: red;
+}
+
+.lists p + ul{
+    background: green;
+}

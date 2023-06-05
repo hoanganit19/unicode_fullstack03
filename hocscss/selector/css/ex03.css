@@ -1,0 +1,21 @@
+p input:checked ~ span{
+    color: red;
+}
+
+/* .website a[href="https://unicode.vn"]{
+    color: red;
+} */
+
+.website a[href*="unicode.vn"]{
+    color: red;
+}
+
+
+.website a[target]{
+    color: green;
+}
+
+.products, .posts{
+    background: green;
+    color: #fff;
+}

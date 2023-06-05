@@ -1,0 +1,68 @@
+.btn{
+    background: red;
+    color: #fff;
+    border: none;
+}
+
+.btn:hover{
+    background: yellow;
+    color: #333;
+}
+
+.btn:active, .btn:focus{
+    background: green;
+    color: #fff;
+}
+
+.username:focus{
+    background: #969696;
+}
+
+/* .email:disabled{
+    background: grey;
+}
+
+.email:disabled::placeholder{
+    color: #fff;
+} */
+
+.email[disabled]{
+    background: grey;
+}
+
+.email[disabled]::placeholder{
+    color: #fff;
+}
+/* 
+.products .item{
+    color: red;
+}
+
+.products .item.active{
+    color: initial;
+} */
+/* 
+.products .item:not(.active){
+    color: red;
+} */
+
+/* .products .item:first-child{
+    color: red;
+} */
+
+/* .products .item:first-of-type{
+    color: red;
+}
+
+
+.products .item:last-child{
+    color: green;
+} */
+
+/* .products .item:nth-child(2n+2){
+    color: red;
+} */
+
+.products .item:nth-of-type(2n+2){
+    color: red;
+}

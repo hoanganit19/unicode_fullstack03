@@ -1,0 +1,29 @@
+#title{
+    color: red;
+}
+
+.title{
+    color: blue;
+}
+
+h1{
+    color: green;
+}
+
+/*inline => id => class => tagname*/
+
+/* .wrapper .content{
+    color: red;
+}
+
+.main .content{
+    color: blue;
+} */
+
+.wrapper > .content{
+    color: red;
+}
+
+.menu > li > a{
+    color: red;
+}
