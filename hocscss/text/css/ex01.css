@@ -7,7 +7,7 @@ p{
 }
 
 .content{
-    color: blue;
+    color: blueviolet;
 }
 
 p:nth-child(2){
@@ -20,4 +20,8 @@ p:nth-child(3){
 
 .content p:nth-child(2){
     color: unset;
+}
+
+.content .link a{
+    color: red;
 }

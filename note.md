@@ -176,3 +176,24 @@ Nguyên tắc với selector ~
 - inherit
 - initial
 - unset
+
+## Các đơn vị trong CSS
+
+### Tuyệt đối
+
+- px (pixel) = Điểm ảnh
+- pt (point) = 1.3 x pixel
+
+### Tương đối
+
+- em: Tỷ lệ với font-size của thành phần cha
+  => 1em = font-size của thành phần cha
+- rem: Tỷ lệ với font-size của trình duyệt (Có thay đổi bằng selector html)
+  => 1rem = font-size của selector html
+- %: Giống em (Khác về tỷ lệ)
+  => 100% = font-size của thành phần cha
+
+Các đơn vị bên kích thước:
+
+- vw (viewport width)
+- vh (viewport height)

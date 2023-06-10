@@ -1,0 +1,17 @@
+.content{
+    background: gray;
+}
+
+.content:hover .element:nth-child(2n+1){
+    color: red;
+}
+
+.content .element:nth-child(n):hover{
+    color: blueviolet;
+}
+
+/*
+Bài tập: 
+- Hover vào content => Đổi màu các item lẻ (Màu đỏ)
+- Hover vào các item => Đổi màu item vừa hover vào (Tím)
+*/

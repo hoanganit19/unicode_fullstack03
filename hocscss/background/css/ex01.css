@@ -1,0 +1,19 @@
+body{
+    /* background-color: gold;
+    background-image: url('../images/bg01.jpg');
+    background-repeat: no-repeat; */
+    /* background-size: 100px 100px;
+    background-position: 50% 100%; */
+    /* background-size: cover;
+    background-attachment: fixed; */
+    background: gold url('../images/bg01.jpg') no-repeat fixed;
+    background-size: cover;
+}
+
+h1{
+    background-color: rgba(255, 228, 196, 0.685);
+}
+
+.content{
+    background-color: rgba(127, 255, 212, 0.303);
+}

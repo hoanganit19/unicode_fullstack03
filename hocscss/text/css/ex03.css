@@ -1,0 +1,19 @@
+body{
+    line-height: 1.5;
+    font-size: 25px;
+    /* letter-spacing: 5px; */
+    /* word-spacing: 5px; */
+} 
+
+.title{
+    text-decoration: overline underline line-through;
+}
+
+.link a{
+    text-decoration: none;
+    text-transform: none;
+}
+
+.content{
+    text-indent: 10px;
+}
