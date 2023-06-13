@@ -1,0 +1,39 @@
+body{
+    font-size: 17px;
+}
+.content{
+    width: 300px;
+    border: 1px solid red;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    margin: 30px auto;
+}
+
+.link a{
+    text-decoration: none;
+    border: 1px solid red;
+    margin: 0 15px;
+    padding: 10px;
+}
+
+.first{
+    border: 1px solid red;
+    margin-bottom: 10px;
+}
+
+.second{
+    border: 1px solid red;
+    margin-top: 20px;
+}
+
+.banner{
+    background: red;
+    color: #fff;
+    border: 1px solid red;
+}
+
+.banner h1{
+    margin: 30px 0;
+}

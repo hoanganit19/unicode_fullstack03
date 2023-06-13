@@ -1,0 +1,10 @@
+.image{
+    width: 300px;
+    border: 1px solid red;
+}
+
+.image img{
+    width: 100px;
+    min-width: 200px;
+    /* max-width: 200px; */
+}

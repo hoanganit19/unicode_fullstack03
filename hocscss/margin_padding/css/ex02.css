@@ -1,0 +1,13 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.content{
+    border: 1px solid red;
+    width: 300px;
+    padding: 30px;
+    margin: 30px;
+    box-sizing: content-box;
+}
