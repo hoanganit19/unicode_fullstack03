@@ -1,0 +1,44 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.col-1{
+    width: 300px;
+    height: 150px;
+    background: red;
+    color: #fff;
+    font-size: 1.5rem;
+    float: left;
+}
+
+.col-2{
+    width: 300px;
+    height: 200px;
+    background: rgb(0, 60, 60);
+    color: #fff;
+    font-size: 1.5rem;
+    float: left;
+}
+
+.text{
+    clear: left;
+}
+
+.container{
+    max-width: 800px;
+    margin: 30px auto;
+    border: 1px solid red;
+}
+
+.container::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+
+.clear{
+    clear: both;
+}

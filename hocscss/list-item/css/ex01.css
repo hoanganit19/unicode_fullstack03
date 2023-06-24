@@ -1,0 +1,56 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.box{
+    width: 500px;
+    margin: 30px auto;
+    border: 1px solid red;
+    padding: 15px;
+}
+
+.box ul{
+    /* list-style-position: inside;
+    list-style-type: disc; */
+    list-style: none;
+}
+
+.box ul li{
+    background: url('https://cdn.icon-icons.com/icons2/2098/PNG/512/arrow_right_circle_icon_128948.png') no-repeat left center;
+    background-size: 16px 16px;
+    padding-left: 20px;
+    line-height: 1.5;
+}
+
+.facebook i{
+    color: red;
+    font-size: 2rem;
+}
+
+.social{
+    width: 300px;
+    margin: 30px auto;
+    list-style: none;
+}
+
+.social li a{
+    text-decoration: none;
+}
+
+.social li a::before{
+    font-family: 'Font Awesome 6 Brands';
+}
+
+.social li.facebook a::before{
+    content: '\f09a';
+}
+
+.social li.google a::before{
+    content: "\f1a0"; 
+}
+
+.social li.twitter a::before{
+    content: "\f099";
+}

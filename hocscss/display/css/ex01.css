@@ -1,0 +1,33 @@
+/*
+display: none | block | inline-block | inline
+
+- flex
+- grid
+- table
+- list-item
+
+=> Nhóm nâng cao, sử dụng thêm các thuộc tính
+*/
+.box:hover{
+    display: none;
+}
+
+.lists{
+   /* display: flex; */
+   width: 500px;
+   margin: 30px auto;
+}
+
+.lists .item{
+    /* display: block;
+    border: 1px solid red;
+    padding: 10px; */
+    display: list-item;
+   
+}
+
+/* .sidebar span{
+    border-bottom: 1px solid red;
+    display: block;
+} */
+

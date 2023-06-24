@@ -1,0 +1,55 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 2000px;
+}
+
+.box{
+    width: 600px;
+    height: 400px;
+    border: 1px solid red;
+    margin: 30px auto;
+    position: relative;
+}
+
+.box h2 {
+    color: #fff;
+    padding: 30px;
+    background: green;
+    border: 1px solid #fff;
+    width: 300px;
+}
+
+.box .item-2{ 
+ /* position: absolute; */
+ /* left: 0;
+ right: 0;
+ top: 0;
+ bottom: 0; */
+ position: fixed;
+ left: 0;
+ top: 0;
+}
+
+/* .box .item-3{
+    position: relative;
+} */
+
+/*
+position
+- static: Không có position
+- relative: Tương đối
+- absolute: Tuyệt đối
+- fixed: Cố định
+
+Thuộc tính
+- top
+- left
+- right
+- bottom
+- z-index
+*/

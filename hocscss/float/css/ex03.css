@@ -1,0 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*
+- Tại sao mỗi ảnh lại có khoảng cách ngang và dọc
+- img là inline lại set width và height?
+
++ replace: img, input
++ non-replace: span, a
+
+*/
+
+.images{
+    line-height: 0;
+}
+
+.btn{
+    display: block;
+}
+
+.link{
+    border: 1px solid red;
+    display: block;
+}
