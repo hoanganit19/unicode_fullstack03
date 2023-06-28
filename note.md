@@ -197,3 +197,94 @@ Các đơn vị bên kích thước:
 
 - vw (viewport width)
 - vh (viewport height)
+
+# CSS
+
+## Flex
+
+### Flex Container
+
+- display: flex
+- justify-content: Căn chỉnh các item theo trục chính
+
+* flex-start
+* flex-end
+* center
+* space-around
+* space-between
+* space-evenly
+
+- flex-direction: Chọn hướng
+
+* row
+* row-reverse
+* column
+* column-reverse
+
+- flex-wrap
+
+* nowrap
+* wrap
+* wrap-reverse
+
+- align-items: Căn chỉnh theo trục cross
+
+* stretch
+* flex-start
+* center
+* flex-end
+* baseline
+
+- align-content
+
+* stretch
+* flex-start
+* flex-end
+* center
+* space-around
+* space-between
+* space-evenly
+
+### Flex Item
+
+- flex-grow
+
+- flex-shrink
+
+- flex-basis
+
+* Bị chặn bởi min-width, max-width nếu flex-direction: row
+* Bị chặn bởi min-height, max-height nếu flex-direction: column
+
+- flex: grow shrink basis
+
+- order: Sắp xếp vị trí của flex item
+
+- align-self
+
+* stretch
+* flex-start
+* center
+* flex-end
+* baseline
+
+## Transition
+
+- Giúp delay quá trình chuyển động của thành phần css
+- Chỉ delay các thuộc tính có giá trị số
+
+Các thuộc tính:
+
+- transition-property
+
+* all
+* Thuộc tính css muốn delay
+
+- transition-duration: Thời gian hoàn thành chuyển động
+
+* ms
+* s
+
+- transition-timing-function: Tùy chỉnh tốc độ từng giai đoạn của quá trình chuyển động
+
+- transition-delay: Delay trước khi chuyển động

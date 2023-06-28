@@ -1,0 +1,40 @@
+.btn-wrap {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.btn-wrap .btn {
+  border: none;
+  background: green;
+  color: #fff;
+  padding: 10px 30px;
+  cursor: pointer;
+  border-radius: 99px;
+  position: relative;
+  transition: all 0.4s linear;
+}
+
+.btn-wrap .btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  background: red;
+  border-radius: 99px;
+  transition: all 0.4s linear;
+}
+
+.btn-wrap .btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-wrap .btn:hover::before {
+  right: 0;
+}
+
+.btn-wrap .btn:hover {
+  color: yellow;
+}

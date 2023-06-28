@@ -1,0 +1,19 @@
+.box h1 {
+  /* transition-property: padding-left;
+  transition-duration: 2s;
+  transition-timing-function: linear; */
+  /* transition-delay: 0; */
+  transition: 0.4s linear;
+  transition-property: padding-left, color, font-size;
+  font-size: 2rem;
+}
+
+.box h1:hover {
+  padding-left: 100px;
+  color: red;
+  font-size: 2.5rem;
+}
+
+/* .box:hover {
+  font-size: 1.2rem;
+} */
