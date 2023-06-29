@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.box {
+  width: 300px;
+  margin: 30px auto;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  transition: all 0.1s linear;
+}
+
+.form-group input {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  width: 100%;
+}
+
+.form-group input:focus + label,
+.form-group input:valid + label {
+  font-size: 0.5rem;
+  align-items: flex-start;
+}
+
+.form-group input:focus {
+  font-size: 0.8rem;
+}

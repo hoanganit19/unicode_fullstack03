@@ -1,0 +1,44 @@
+.toggle {
+  display: block;
+  width: 80px;
+  height: 40px;
+  margin: 30px auto;
+  background: gray;
+  border-radius: 99px;
+  position: relative;
+  cursor: pointer;
+}
+
+.toggle input {
+  display: none;
+}
+
+.toggle span.btn {
+  display: block;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  right: calc(100% - 38px);
+  transition: all 0.2s linear;
+  z-index: 1;
+}
+
+.toggle input:checked + span.btn {
+  right: 2px;
+}
+
+.toggle .bg {
+  position: absolute;
+  inset: 0;
+  background: green;
+  border-radius: 99px;
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+
+.toggle input:checked ~ span.bg {
+  opacity: 1;
+}
