@@ -1,0 +1,41 @@
+@keyframes color {
+  from {
+    background: red;
+  }
+
+  50% {
+    background: blue;
+  }
+
+  to {
+    background: yellow;
+  }
+}
+
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+    scale: 1;
+  }
+
+  25% {
+    rotate: 90deg;
+    scale: 1;
+  }
+
+  50% {
+    rotate: 180deg;
+    scale: 1.2;
+    color: yellow;
+  }
+
+  75% {
+    rotate: 270deg;
+    scale: 1;
+  }
+
+  to {
+    rotate: 360deg;
+    scale: 1;
+  }
+}

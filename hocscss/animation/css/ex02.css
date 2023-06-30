@@ -1,0 +1,7 @@
+.sub-title {
+  animation-duration: 4s;
+}
+
+.images img {
+  animation: backInUp 1s linear;
+}

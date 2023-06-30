@@ -1,0 +1,38 @@
+/*
+Biến CSS
+- Biến toàn cục
+- Biến cục bộ
+*/
+/* 
+Biến toàn cục */
+:root {
+  --primary-color: red;
+  --secondary-color: green;
+  --font-size: 16px;
+}
+
+.title {
+  color: var(--primary-color);
+  font-size: calc(var(--font-size) + 5px);
+}
+
+.sub-title {
+  color: var(--secondary-color);
+}
+
+.box {
+  /* Biến cục bộ*/
+  --font-family: Arial;
+  --color: green;
+  padding: 10px;
+  border: 1px solid red;
+  font-family: var(--font-family);
+}
+
+.box .content {
+  color: var(--color);
+}
+
+/* .menu {
+  color: var(--color);
+} */

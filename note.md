@@ -288,3 +288,10 @@ Các thuộc tính:
 - transition-timing-function: Tùy chỉnh tốc độ từng giai đoạn của quá trình chuyển động
 
 - transition-delay: Delay trước khi chuyển động
+
+Responsive Web Design
+
+- Viewport
+- Breakpoint và các breakpoint phổ biến
+- Media Query
+- Desktop First, Mobile first
