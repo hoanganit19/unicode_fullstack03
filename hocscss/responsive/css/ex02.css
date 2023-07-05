@@ -26,8 +26,10 @@ img {
 }
 
 .container {
+  --container-space: 15px;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 var(--container-space);
 }
 
 .products {
@@ -49,13 +51,68 @@ img {
 }
 
 .products .product-list .product-item {
-  flex-basis: calc(100% / 3);
+  --column-number: 1;
+  flex-basis: calc(100% / var(--column-number));
   padding: 0 10px;
   margin-bottom: 20px;
 }
 
 .products .product-list .product-item h3 {
   font-size: 2rem;
+  margin-top: 10px;
+}
+
+.products .product-list .product-item img {
+  width: 100%;
+  display: block;
+}
+
+/* @media screen and (max-width: 1200px) {
+  .container {
+    --container-space: 15px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .products .product-list .product-item {
+    --column-number: 3;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .products .product-list .product-item {
+    --column-number: 2;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .products .product-list .product-item {
+    --column-number: 1;
+  }
+} */
+
+@media screen and (min-width: 576px) {
+  .products .product-list .product-item {
+    --column-number: 2;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .products .product-list .product-item {
+    --column-number: 3;
+  }
+}
+
+@media screen and (min-width: 1250px) {
+  .container {
+    --container-space: 0;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .products .product-list .product-item {
+    --column-number: 4;
+  }
 }
 
 /*
@@ -63,4 +120,6 @@ Mặc định = 4 cột
 992px => 3 cột
 768px => 2 cột
 576px => 1 cột
+
+Grid System = Hệ thống lưới hỗ trợ chia layout (Tự build), hỗ trợ Responsive
 */
