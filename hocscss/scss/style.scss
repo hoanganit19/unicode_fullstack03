@@ -1,0 +1,25 @@
+//Comment trong SCSS
+/*Comment CSS*/
+// :root {
+//     --primary-color: red;
+// }
+
+//Import Parts
+@import 'parts/variables';
+@import 'parts/reset';
+@import 'parts/placeholder';
+
+//Import Layouts
+@import 'layouts/header';
+@import 'layouts/footer';
+@import 'layouts/breadcrums';
+
+//Import Pages
+
+//1. Home
+@import 'pages/home/slide';
+@import 'pages/home/about';
+
+//2. About
+@import 'pages/about/page-title';
+@import 'pages/about/content';

@@ -1,0 +1,47 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* #title {
+  color: yellow;
+}
+
+#title {
+  color: green;
+} */
+
+.box .content .title {
+  color: green;
+}
+
+.content .title {
+  color: red;
+}
+
+/* h2 {
+  color: blue !important;
+} */
+
+/*
+Độ ưu tiên - Tỷ lệ nghịch với phạm vi tác động
+0. Important
+1. Inline 
+2. id
+3. class
+4. tag
+
+Phạm vi tác động
+1. tag
+2. class
+3. id
+4. inline
+
+Lưu ý khi sử dụng !important
+- Chỉ áp dụng với thuộc tính cần thiết
+- Không được sử dụng bừa bãi
+
+Nguyên tắc ghi đè theo thứ tự
+- Code CSS viết ở dưới độ ưu tiên sẽ cao hơn
+- Selector càng chi tiết => Độ ưu tiên càng cao
+*/

@@ -1,0 +1,53 @@
+
+.header {
+    font-family: $fontHeading;
+    $padding: 10px;
+    .topbar {
+        font: {
+            size: 1rem;
+            family: Roboto, sans-serif;
+        }
+        .topbar-left {
+            padding: $padding;
+            text: {
+                align: center;
+                decoration: none;
+            }
+        }
+
+        .topbar-right {
+            padding: $padding + 15px;
+        }
+    }
+    .header-inner {
+        .logo {
+            padding: $padding;
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+        ul {
+            &.menu {
+            > li {
+                 > a {
+                    color: #333;
+                    text-decoration: none;
+                    &:hover {
+                        color: red;
+                    }
+                 }
+                 &::before {
+                    content: '';
+                    border-left: 1px solid red;
+                 }
+            }
+            &.menu-top {
+                background: red;
+            }
+        }
+        }
+        
+    }
+    
+}

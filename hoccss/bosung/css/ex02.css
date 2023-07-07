@@ -1,0 +1,25 @@
+.box-item {
+  border: 1px solid;
+  color: #fff;
+}
+
+.box {
+  border-color: red;
+  background: green;
+}
+
+.content {
+  background: red;
+  border-color: green;
+}
+
+.about {
+  background: black;
+  border-color: aqua;
+}
+
+.box ul,
+.content ul {
+  list-style: none;
+  margin: 20px;
+}

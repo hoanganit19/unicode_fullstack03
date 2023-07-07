@@ -1,0 +1,7 @@
+.about {
+  
+    .about-content {
+        @extend %section-base;
+        background: #efefef;
+    }
+}
