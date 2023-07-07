@@ -1,0 +1,46 @@
+//Vòng lặp trong SCSS
+
+//@for
+
+// $maxColumn: 12;
+
+// @for $i from 1 through $maxColumn {
+//     .col-#{$i} {
+//         width: 100% / $i;
+//         padding: 0;
+//     }
+// }
+
+//@each
+
+// $sizes: 20 40 60 80;
+
+// @each $size in $sizes {
+//     .item-#{$size} {
+//         font-size: #{$size}px;
+//          width: #{2 * $size}px;
+//     }
+// }
+
+// $sizes: (small, 20px, normal), (medium, 40px, italic), (large, 80px, bold);
+
+// @each $type, $size, $style in $sizes {
+//     .text-#{$type} {
+//         font-size: $size;
+//         padding: 0 $size / 2;
+        
+//         @if ($style == 'bold') {
+//             font-weight: $style;
+//         } @else {
+//             font-style: $style;
+//         }
+//     }
+// }
+
+$sizes: (small: 20px, medium: 40px, large: 60px);
+
+@each $type, $size in $sizes {
+    .text-#{$type} {
+        font-size: $size;
+    }
+}

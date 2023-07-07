@@ -1,7 +1,7 @@
-
 .header {
     font-family: $fontHeading;
     $padding: 10px;
+    @include position(relative, top, 0, left, 10px);
     .topbar {
         font: {
             size: 1rem;
@@ -20,6 +20,7 @@
         }
     }
     .header-inner {
+        @include center(500px, 30px);
         .logo {
             padding: $padding;
             img {
@@ -27,26 +28,29 @@
                 height: auto;
             }
         }
-        ul {
-            &.menu {
-            > li {
-                 > a {
-                    color: #333;
-                    text-decoration: none;
-                    &:hover {
-                        color: red;
-                    }
-                 }
-                 &::before {
-                    content: '';
-                    border-left: 1px solid red;
-                 }
-            }
-            &.menu-top {
-                background: red;
-            }
-        }
-        }
+
+        //@include menu(".primary-menu", false);
+        @include menu();
+        // ul {
+        //     &.menu {
+        //     > li {
+        //          > a {
+        //             color: #333;
+        //             text-decoration: none;
+        //             &:hover {
+        //                 color: red;
+        //             }
+        //          }
+        //          &::before {
+        //             content: '';
+        //             border-left: 1px solid red;
+        //          }
+        //     }
+        //     &.menu-top {
+        //         background: red;
+        //     }
+        // }
+        // }
         
     }
     

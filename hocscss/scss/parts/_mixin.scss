@@ -1,0 +1,31 @@
+@mixin center($width, $margin: 0) {
+    display: block;
+    margin: $margin auto;
+    width: $width;
+}
+
+@mixin position($type: absolute, $propertyX, $valueX, $propertyY, $valueY) {
+    position: $type;
+    #{$propertyX}: $valueX;
+    #{$propertyY}: $valueY;
+}
+
+@mixin menu($selector: '', $wrap: true) {
+    @if ($selector != '') {
+        #{$selector} {
+            padding: 10px 0;
+            list-style: none;
+            display: flex;
+            
+            @if ($wrap == true) {
+                flex-wrap: wrap;
+            } @else {
+                flex-wrap: nowrap;
+            }
+           
+            @include center(80%);
+        }
+    }
+    
+    
+}
