@@ -1,0 +1,67 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;	
+    outline: 0;
+}
+
+html {
+    font-size: 10px; //62.5%
+}
+
+body {
+    font-size: $fontSize;
+    line-height: 1.5;
+    color: $textColor;
+    font-family: $fontFamily;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: $textColor;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+$sizes: 0, 25, 50, 75, 100;
+
+@each $size in $sizes {
+    .w-#{$size} {
+        width: $size * 1%;
+    }
+
+    .h-#{$size} {
+        height: $size * 1%;
+    }
+}
+
+.align-items-start {
+    align-items: flex-start;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.align-items-end {
+    align-items: flex-end;
+}
+
+.justify-content-start {
+    justify-content: flex-start;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
