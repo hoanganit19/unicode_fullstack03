@@ -1,4 +1,4 @@
-.header {
+header {
     font-family: $fontHeading;
     $padding: 10px;
     @include position(relative, top, 0, left, 10px);
