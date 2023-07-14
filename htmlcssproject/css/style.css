@@ -95,30 +95,55 @@ ul, ol {
 }
 
 .header {
+  position: relative;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
   padding: 15px 0;
 }
 .header [class^=col-] {
   margin: 0;
 }
+.header .header-logo {
+  text-align: center;
+}
 .header .header-logo img {
-  max-height: 157px;
+  max-height: 80px;
   width: auto;
 }
+.header .menu-row {
+  align-items: flex-start;
+}
+.header .menu-row input[type=checkbox]:checked + .header-menu {
+  translate: 0;
+  opacity: 1;
+}
+.header .header-menu {
+  transition: 0.4s ease;
+  transition-property: "translate, opacity";
+  translate: -100%;
+  opacity: 0;
+  background: #E05000;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 15px;
+}
 .header .header-menu > ul {
-  display: flex;
+  display: block;
   align-items: center;
   gap: 0 60px;
 }
 .header .header-menu > ul > li > a {
-  transition: color 0.4s ease;
+  transition: 0.4s ease;
+  transition-property: color;
   display: block;
   font-size: 2rem;
-  color: #2C2C2C;
+  color: #fff;
   font-weight: 600;
+  padding: 10px 0;
 }
 .header .header-menu > ul > li > a.active, .header .header-menu > ul > li > a:hover {
-  color: #46B20F;
+  color: #fff;
 }
 .header .header-icon {
   display: flex;
@@ -126,6 +151,7 @@ ul, ol {
   align-items: center;
 }
 .header .header-icon .cart-icon {
+  display: none;
   position: relative;
 }
 .header .header-icon .cart-icon span {
@@ -138,6 +164,58 @@ ul, ol {
   border-radius: 50%;
   font-size: 1.3rem;
   padding: 0 6px;
+}
+.header .header-icon .search-icon {
+  cursor: pointer;
+}
+.header .toggle-menu {
+  display: flex;
+  align-items: center;
+}
+.header .toggle-menu label {
+  font-size: 3rem;
+}
+
+@media screen and (min-width: 991px) {
+  .header .toggle-menu {
+    display: none;
+  }
+  .header .header-icon .cart-icon {
+    display: block;
+  }
+  .header .header-menu {
+    opacity: 1;
+    transition: none;
+    translate: 0;
+    background: transparent;
+    position: static;
+    padding: 0;
+  }
+  .header .header-menu > ul {
+    display: flex;
+    gap: 0 30px;
+  }
+  .header .header-menu > ul > li > a {
+    color: #2C2C2C;
+    padding: 0;
+  }
+  .header .header-menu > ul > li > a.active, .header .header-menu > ul > li > a:hover {
+    color: #46B20F;
+  }
+  .header .menu-row {
+    align-items: center;
+  }
+  .header .header-logo {
+    text-align: left;
+  }
+  .header .header-logo img {
+    max-height: 157px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .header .header-menu > ul {
+    gap: 0 60px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

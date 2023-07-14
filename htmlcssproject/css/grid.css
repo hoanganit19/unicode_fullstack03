@@ -6,11 +6,13 @@
 
 :root {
   --container-width: 1440px;
+  --container-padding: 15px;
   --colum-space: 20px;
 }
 
 .container {
   max-width: var(--container-width);
+  padding: 0 var(--container-padding);
   margin: 0 auto;
 }
 
@@ -20,7 +22,7 @@
   margin: 0 calc(-1 * var(--colum-space) / 2);
 }
 
-.row [class^=col-] {
+.row [class^="col-"] {
   --col-width: calc(100% / (12 / var(--col-number)));
   flex-basis: var(--col-width);
   max-width: var(--col-width);
@@ -229,6 +231,10 @@
   }
 }
 @media screen and (min-width: 1400px) {
+  .container {
+    padding: 0;
+  }
+
   .col-xxl-1 {
     --col-number: 1;
   }

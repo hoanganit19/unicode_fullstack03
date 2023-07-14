@@ -1,0 +1,36 @@
+
+$sizes: 0, 25, 50, 75, 100;
+
+@each $size in $sizes {
+    .w-#{$size} {
+        width: $size * 1%;
+    }
+
+    .h-#{$size} {
+        height: $size * 1%;
+    }
+}
+
+.align-items-start {
+    align-items: flex-start;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.align-items-end {
+    align-items: flex-end;
+}
+
+.justify-content-start {
+    justify-content: flex-start;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}

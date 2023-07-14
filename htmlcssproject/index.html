@@ -19,7 +19,12 @@
     <header class="header">
       <div class="container">
         <div class="row">
-          <div class="col-3">
+          <div class="col-1 toggle-menu">
+            <label for="open-menu">
+              <i class="fa-solid fa-bars"></i>
+            </label>
+          </div>
+          <div class="col-10 col-lg-3">
             <div class="header-logo">
               <a href="#">
                 <img src="images/logo.png?ver=1" alt="" />
@@ -27,9 +32,10 @@
             </div>
             <!--End .logo-->
           </div>
-          <div class="col-9">
-            <div class="row h-100 align-items-center justify-content-end">
+          <div class="col-1 col-lg-9">
+            <div class="row h-100 justify-content-end menu-row">
               <div class="col-10">
+                <input type="checkbox" id="open-menu" hidden />
                 <nav class="header-menu">
                   <ul class="justify-content-end">
                     <li><a href="#" class="active">Trang chủ</a></li>
@@ -41,7 +47,7 @@
                 </nav>
                 <!--End .header-menu-->
               </div>
-              <div class="col-2">
+              <div class="col-12 col-lg-2">
                 <div class="header-icon justify-content-end">
                   <div class="cart-icon">
                     <span>3</span>
@@ -62,5 +68,9 @@
       </div>
     </header>
     <!--End .header-->
+    <section class="hero">
+      <div class="container"></div>
+    </section>
+    <!--End .hero-->
   </body>
 </html>
