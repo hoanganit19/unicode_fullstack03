@@ -2,7 +2,7 @@
   padding: 0 10px;
 }
 .hero > .row > [class^=col-]:last-child {
-  background: #DCFFCA;
+  background: #dcffca;
 }
 .hero .hero-inner {
   padding: 15px 0;
@@ -54,7 +54,8 @@
     width: 80%;
     padding: 0;
   }
-  .hero .hero-inner h1, .hero .hero-inner h2 {
+  .hero .hero-inner h1,
+  .hero .hero-inner h2 {
     text-align: left;
   }
   .hero .hero-image .text-wrap {
