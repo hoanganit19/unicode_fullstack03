@@ -37,3 +37,26 @@ $sizes: 0, 25, 50, 75, 100;
 .justify-content-end {
   justify-content: flex-end;
 }
+
+.btn {
+  color: #fff;
+  padding: 13.333px 11.667px;
+  font-weight: 700;
+  border-radius: 6.667px;
+
+  &.btn-primary {
+    background: $primaryColor;
+  }
+
+  &.btn-secondary {
+    background: $secondaryColor;
+  }
+
+  &.btn-dark {
+    background: $textColor;
+  }
+
+  &.btn-block {
+    display: block;
+  }
+}
