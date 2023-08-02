@@ -295,3 +295,8 @@ Responsive Web Design
 - Breakpoint và các breakpoint phổ biến
 - Media Query
 - Desktop First, Mobile first
+
+## Javascript
+
+- Kiểu dữ liệu: Kiểu nguyên thủy, kiểu tham chiếu
+- Kiểu dữ liệu chuỗi (String)
