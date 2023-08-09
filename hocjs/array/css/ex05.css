@@ -1,0 +1,17 @@
+.posts {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.posts img {
+  width: 200px;
+  float: left;
+  margin-right: 15px;
+}
+
+.posts::after {
+  content: "";
+  display: block;
+  clear: both;
+}
