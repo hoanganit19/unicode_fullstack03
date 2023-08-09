@@ -10,6 +10,12 @@
   margin-right: 15px;
 }
 
+.posts img.right {
+  float: right;
+  margin-right: 0;
+  margin-left: 15px;
+}
+
 .posts::after {
   content: "";
   display: block;

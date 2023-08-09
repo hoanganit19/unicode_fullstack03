@@ -45,11 +45,12 @@ var posts = [
   ],
 ];
 
-var getPostItemHtml = function (title, img, content) {
+var getPostItemHtml = function (title, img, content, index) {
   var postItemHtml = `<div class="posts">
     <img
       src="${img}"
       alt="${title}"
+      class="${index % 2 !== 0 ? "right" : ""}"
     />
     <h2 class="title">${title}</h2>
     <p>
@@ -61,8 +62,8 @@ var getPostItemHtml = function (title, img, content) {
   return postItemHtml;
 };
 
-var result = posts.map(function (post) {
-  return getPostItemHtml(post[0], post[1], post[2]);
+var result = posts.map(function (post, index) {
+  return getPostItemHtml(post[0], post[1], post[2], index);
 });
 
 var postHtml = result.join("");
