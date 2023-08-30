@@ -1,0 +1,84 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel .carousel-inner {
+  /* width: 5000px; */
+  transition: all 0.4s ease;
+}
+
+.carousel .carousel-inner::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.carousel .carousel-inner .item {
+  float: left;
+}
+
+.carousel .carousel-inner .item img {
+  width: 100%;
+  height: auto;
+}
+
+.carousel .carousel-nav span {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  width: 40px;
+  height: 40px;
+  display: block;
+  background: gray;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.carousel .carousel-nav span.prev {
+  left: 5px;
+}
+
+.carousel .carousel-nav span.next {
+  right: 5px;
+}
+
+.carousel .carousel-dots {
+  display: flex;
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  gap: 10px;
+  justify-content: center;
+}
+
+.carousel .carousel-dots span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: gray;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.carousel .carousel-dots span.active,
+.carousel .carousel-dots span:hover {
+  background: goldenrod;
+}
