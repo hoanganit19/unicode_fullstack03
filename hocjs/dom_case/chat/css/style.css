@@ -1,0 +1,36 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+.chatbox {
+  border: 1px solid #ccc;
+  width: 400px;
+  margin: 30px auto;
+  padding: 15px;
+}
+
+.chatbox .messages {
+  height: 200px;
+  overflow-y: auto;
+}
+
+.chatbox .message-item {
+  background: rgb(0, 194, 253);
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.chatbox .message-item .remove {
+  float: right;
+  cursor: pointer;
+}
+
+.chatbox .message {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+}

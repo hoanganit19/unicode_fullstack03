@@ -1,0 +1,25 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+.player {
+  width: 400px;
+  margin: 30px auto;
+}
+
+.player .play-btn {
+  text-align: center;
+  cursor: pointer;
+}
+
+.player .play-inner {
+  display: flex;
+  gap: 10px;
+}
+
+.player .play-inner input {
+  width: 100%;
+}
