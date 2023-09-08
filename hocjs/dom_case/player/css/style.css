@@ -23,3 +23,9 @@
 .player .play-inner input {
   width: 100%;
 }
+
+.player .volume {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
