@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.4s ease;
+      transition-property: opacity, visibility;
+    }
+
+    .preloader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="preloader">
+    <span>Loading...</span>
+  </div>
+  <img src="https://picsum.photos/3000/1000" alt="">
+  <script src="js/ex11.js"></script>
+</body>
+
+</html>

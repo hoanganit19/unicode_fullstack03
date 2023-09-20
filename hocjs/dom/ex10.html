@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      height: 2000px;
+      /* width: 1000px; */
+    }
+
+    .top {
+      background: red;
+      color: #fff;
+      padding: 5px 10px;
+      border: 0;
+      position: fixed;
+      right: 5px;
+      bottom: 5px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .top.show {
+      display: block;
+    }
+
+    .header {
+      text-align: center;
+      color: #fff;
+    }
+
+    .header h1 {
+      padding: 10px 0;
+      background: gray;
+    }
+
+    .header nav {
+      background: green;
+      padding: 5px 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .header nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .header nav.fixed {
+      position: fixed;
+      inset: 0 0 auto 0;
+    }
+
+    main {
+      padding: 10px 0;
+    }
+
+    main section {
+      min-height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <h1>HEADER</h1>
+    <nav>
+      <a href="#hero">Về Unicode</a>
+      <a href="#register">Đăng ký khóa học</a>
+    </nav>
+  </header>
+  <main>
+    <section id="hero">
+      <h2>Hero Unicode</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia aspernatur eos rem voluptas quasi obcaecati nihil assumenda. Magnam ipsa odit ex, sint expedita vel consectetur architecto, excepturi quasi doloremque in!
+      </p>
+    </section>
+
+    <section id="register">
+      <h2>Đăng ký khóa học</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia aspernatur eos rem voluptas quasi obcaecati nihil assumenda. Magnam ipsa odit ex, sint expedita vel consectetur architecto, excepturi quasi doloremque in!
+      </p>
+    </section>
+  </main>
+  <button class="top">Top</button>
+  <script src="js/ex10.js"></script>
+</body>
+
+</html>
