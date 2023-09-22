@@ -62,3 +62,57 @@ editor.addEventListener("input", function () {
 
   spanWord.data = wordCount;
 });
+
+//Bài tập: Làm chúc năng new file
+action.addEventListener("change", function () {
+  var value = this.value;
+  if (value === "new") {
+    editor.innerText = "";
+    editor.focus();
+    spanChar.data = 0;
+    spanWord.data = 0;
+    filenameInput.value = "untitled";
+    colorBtn.value = "#000000";
+    heading.value = "P";
+  }
+
+  if (value === "save_txt") {
+    var content = editor.innerText;
+    var blob = new Blob([content]);
+    var url = URL.createObjectURL(blob);
+
+    var a = document.createElement("a");
+    a.download = filenameInput.value + ".txt";
+    a.href = url;
+    a.click(); //Tự động click (Trigger Event)
+  }
+
+  if (value === "save_pdf") {
+    var opt = {
+      margin: 1,
+      filename: filenameInput.value + ".pdf",
+      jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+    };
+
+    html2pdf().set(opt).from(editor).save();
+  }
+});
+
+editor.addEventListener("blur", function () {
+  console.log(this.innerText);
+});
+
+var imageList = document.querySelectorAll(".images .image-item");
+imageList.forEach(function (imageItem) {
+  imageItem.addEventListener("click", function () {
+    var inputFile = this.children[0];
+    inputFile.click();
+
+    inputFile.addEventListener("change", function () {
+      var file = this.files[0];
+      console.log(file);
+      var url = URL.createObjectURL(file);
+      imageItem.style.backgroundImage = `url("${url}")`;
+    });
+  });
+});

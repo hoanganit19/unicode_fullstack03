@@ -48,3 +48,18 @@
   justify-content: flex-end;
   margin-top: 10px;
 }
+
+.images {
+  border: 1px solid #efefef;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.images .image-item {
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+  background-image: url("https://static.wikia.nocookie.net/otonari-no-tenshi/images/c/c9/No_images_available.jpg/revision/latest?cb=20220104141308");
+  background-size: 100% 100%;
+}
