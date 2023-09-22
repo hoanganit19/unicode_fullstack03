@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <select class="action">
+          <option value="" hidden>File</option>
+          <option value="new">New File</option>
+          <option value="save_txt">Save as TXT</option>
+          <option value="save_pdf">Save as PDF</option>
+        </select>
+        <input type="text" class="filename" value="untitled">
+      </div>
+      <!--End .toolbar-left-->
+      <div class="toolbar-right">
+        <select class="heading">
+          <option value="P">None</option>
+          <option value="H1">Heading 1</option>
+          <option value="H2">Heading 2</option>
+          <option value="H3">Heading 3</option>
+          <option value="H4">Heading 4</option>
+          <option value="H5">Heading 5</option>
+          <option value="H6">Heading 6</option>
+        </select>
+        <button class="bold"><b>B</b></button>
+        <button class="italic"><i>I</i></button>
+        <button class="underline"><u>U</u></button>
+        <input type="color" class="color" value="#000" />
+      </div>
+    </div>
+    <div class="editor" spellcheck="false"></div>
+    <div class="counter"></div>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
