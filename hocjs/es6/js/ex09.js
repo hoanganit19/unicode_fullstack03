@@ -111,25 +111,31 @@ const getUsers = (userId) => {
 };
 
 const lists = [1, 3, 4];
-const getSalary = () => {
-  let salary = 0;
-  for (let index in lists) {
-    const promise = getUsers(+lists[index]).then((data) => {
-      salary += data.salary;
-      //   return new Promise((resolve) => {
-      //     resolve(salary);
-      //   });
-      return Promise.resolve(salary);
-    });
-    if (+index === lists.length - 1) {
-      return promise;
-    }
-  }
-};
+// const getSalary = () => {
+//   let salary = 0;
+//   for (let index in lists) {
+//     const promise = getUsers(+lists[index]).then((data) => {
+//       salary += data.salary;
+//       //   return new Promise((resolve) => {
+//       //     resolve(salary);
+//       //   });
+//       return Promise.resolve(salary);
+//     });
+//     if (+index === lists.length - 1) {
+//       return promise;
+//     }
+//   }
+// };
 
-getSalary().then((salary) => {
-  console.log(salary);
-});
+// getSalary().then((salary) => {
+//   console.log(salary);
+// });
 
 //Tìm hiểu: Promise.all()
 //Async Await
+
+const promises = lists.map((id) => getUsers(id));
+Promise.all(promises).then((users) => {
+  const salary = users.reduce((total, { salary }) => total + salary, 0);
+  console.log(salary);
+});
