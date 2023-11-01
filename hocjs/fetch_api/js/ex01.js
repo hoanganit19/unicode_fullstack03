@@ -57,7 +57,9 @@ const app = {
         ${excerpt}
       </p>
       <button class="btn btn-primary btn-sm js-click" data-bs-toggle="modal" data-bs-target="#modal-detail" data-id="${id}">Chi tiết</button>
-    </div>
+      <button class="btn btn-warning btn-sm js-update" data-id="${id}" data-bs-toggle="modal" data-bs-target="#modal-detail">Sửa</button>
+      <button class="btn btn-danger btn-sm js-delete" data-id="${id}">Xóa</button>  
+      </div>
   </div>`,
       )
       .join("")}
@@ -157,6 +159,151 @@ const app = {
       modalContent.innerText = "";
     });
   },
+  eventAdd: function () {
+    this.showForm();
+    this.modal.addEventListener("submit", (e) => {
+      if (e.target.classList.contains("form-add")) {
+        e.preventDefault();
+        const [titleEl, excerptEl, contentEl, imageEl] = e.target;
+        const title = titleEl.value;
+        const excerpt = excerptEl.value;
+        const content = contentEl.value;
+        const image = imageEl.value;
+        //Xử lý thêm vào Server
+        this.addPost({ title, excerpt, content, image });
+
+        //Đóng modal
+        this.modal.querySelector('[data-bs-dismiss="modal"]').click();
+      }
+    });
+  },
+  eventDelete: function () {
+    this.root.addEventListener("click", (e) => {
+      if (e.target.classList.contains("js-delete")) {
+        if (confirm("Bạn có chắc chắn?")) {
+          const postId = e.target.dataset.id;
+          console.log(postId);
+
+          this.deletePost(postId);
+        }
+      }
+    });
+  },
+  eventUpdate: function () {
+    this.root.addEventListener("click", async (e) => {
+      if (e.target.classList.contains("js-update")) {
+        e.preventDefault();
+        const postId = e.target.dataset.id;
+        const post = await this.fetchDetail(postId, false);
+        this.showForm(post);
+
+        this.modal.addEventListener("submit", (e) => {
+          if (e.target.classList.contains("form-update")) {
+            e.preventDefault();
+            const [titleEl, excerptEl, contentEl, imageEl] = e.target;
+            const title = titleEl.value;
+            const excerpt = excerptEl.value;
+            const content = contentEl.value;
+            const image = imageEl.value;
+            //Xử lý thêm vào Server
+
+            this.updatePost(
+              {
+                title,
+                excerpt,
+                content,
+                image,
+              },
+              postId,
+            ),
+              postId;
+            //Đóng modal
+            this.modal.querySelector('[data-bs-dismiss="modal"]').click();
+          }
+        });
+      }
+    });
+  },
+  deletePost: async function (postId) {
+    //Xử lý xóa -> Gọi API: DELETE /posts/postId
+    const response = await fetch(`http://localhost:3000/posts/${postId}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      this.query._page = 1;
+      this.fetch();
+      this.showMessage("Xóa bài viết thành công");
+    }
+  },
+  addPost: async function (data) {
+    const response = await fetch(`http://localhost:3000/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.ok) {
+      this.query._page = 1;
+      this.fetch();
+      this.showMessage("Thêm bài viết thành công");
+    }
+  },
+  updatePost: async function (data, id) {
+    const response = await fetch(`http://localhost:3000/posts/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.ok) {
+      this.fetch();
+      this.showMessage("Cập nhật bài viết thành công");
+    }
+  },
+  showForm: function (data = {}) {
+    const renderForm = () => {
+      this.modal.querySelector(".modal-title").innerText = `Thêm bài mới`;
+      this.modal.querySelector(".modal-body").innerHTML = `<form class="${
+        Object.keys(data).length ? "form-update" : "form-add"
+      }">
+      <div class="mb-3">
+        <label>Tiêu đề</label>
+        <input type="text" class="form-control title"  placeholder="Tiêu đề..." required value="${
+          data.title ?? ""
+        }">
+      </div>
+      <div class="mb-3">
+        <label>Mô tả</label>
+        <textarea class="form-control excerpt" placeholder="Mô tả..." required>${
+          data.excerpt ?? ""
+        }</textarea>
+      </div>
+      <div class="mb-3">
+        <label>Nội dung</label>
+        <textarea class="form-control content" placeholder="Nội dung..." rows="5" required>${
+          data.content ?? ""
+        }</textarea>
+      </div>
+      <div class="mb-3">
+        <label>Ảnh</label>
+        <input type="url" class="form-control image" placeholder="Ảnh..." required value="${
+          data.image ?? ""
+        }"/>
+      </div>
+      <button type="submit" class="btn btn-primary">Lưu</button>
+    </form>`;
+    };
+    if (!Object.keys(data).length) {
+      const btn = document.querySelector(".btn-add");
+      btn.addEventListener("click", () => {
+        renderForm();
+      });
+    } else {
+      renderForm();
+    }
+  },
   fetch: async function () {
     const queryString = new URLSearchParams(this.query).toString();
     const response = await fetch(`http://localhost:3000/posts?${queryString}`);
@@ -172,16 +319,34 @@ const app = {
       top: 0,
     });
   },
-  fetchDetail: async function (postId) {
+  fetchDetail: async function (postId, show = true) {
     const response = await fetch(`http://localhost:3000/posts/${postId}`);
 
     if (response.ok) {
-      const { title, content } = await response.json();
-      const modalTitle = this.modal.querySelector(".modal-title");
-      const modalContent = this.modal.querySelector(".modal-body");
-      modalTitle.innerText = title;
-      modalContent.innerHTML = content;
+      const { title, content, excerpt, image } = await response.json();
+      if (show) {
+        const modalTitle = this.modal.querySelector(".modal-title");
+        const modalContent = this.modal.querySelector(".modal-body");
+        modalTitle.innerText = title;
+        modalContent.innerHTML = content;
+      } else {
+        return { title, content, excerpt, image };
+      }
     }
+  },
+  showMessage: function (text) {
+    Toastify({
+      text,
+      duration: 3000,
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "right", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      },
+    }).showToast();
   },
   start: function () {
     Object.assign(this.query, {
@@ -196,7 +361,19 @@ const app = {
     this.eventPaginate();
     this.eventDetail();
     this.eventModal();
+    this.eventAdd();
+    this.eventDelete();
+    this.eventUpdate();
   },
 };
 
 app.start();
+
+/*
+Luồng dữ liệu
+Front-end -> Xử lý (Request, Input,...) -> Call API -> Response (Output) -> Render (Front-End)
+
+Buổi sau: 
+Auhentication -> Xác thực
+Authorization -> Ủy quyền
+*/
