@@ -61,7 +61,9 @@ const app = {
               </div>
     
               <button type="submit" class="btn btn-primary">Đăng nhập</button>
+              <div class="msg text-danger"></div>
             </form>
+            
           </div>
         </div>
       </div>`;
@@ -70,9 +72,9 @@ const app = {
     return `
      <div class="container">
         <h2>Chào mừng bạn đã quay trở lại</h2>
-        <ul class="list-unstyled d-flex gap-3">
-            <li>Chào bạn: <span>Hoàng An</span></li>
-            <li><a href="#">Đăng xuất</a></li>
+        <ul class="list-unstyled d-flex gap-3 profile">
+            <li>Chào bạn: <span>Loading...</span></li>
+            <li><a href="#" class="logout">Đăng xuất</a></li>
         </ul>
      </div>
     `;
@@ -101,10 +103,25 @@ const app = {
       },
       body: JSON.stringify({ email, password }),
     });
-    const data = await response.json();
+
     //Remove Loading
     this.loading(el, false);
-    console.log(data);
+    if (response.ok) {
+      const data = await response.json();
+      //Lưu token lại vào bộ nhớ trình duyệt: cookie, storage (localStorage, sessionStorage)
+      localStorage.setItem("login_token", JSON.stringify(data));
+      this.render(); //Update UI
+      this.getProfile();
+    } else {
+      this.showMessage(
+        el.querySelector(".msg"),
+        "Email hoặc mật khẩu không chính xác",
+      );
+    }
+  },
+  showMessage: function (msgEl, text) {
+    msgEl.innerText = "";
+    msgEl.innerText = text;
   },
   loading: function (el, status = true) {
     const btn = el.querySelector("button");
@@ -118,7 +135,42 @@ const app = {
     }
   },
   isLogin: function () {
+    if (localStorage.getItem("login_token")) {
+      return true;
+    }
     return false;
+  },
+  handleLogout: function () {
+    localStorage.removeItem("login_token");
+    this.render(); //Render UI
+  },
+  getProfile: async function () {
+    if (localStorage.getItem("login_token")) {
+      try {
+        let token = localStorage.getItem("login_token");
+        const { access_token: accessToken } = JSON.parse(token);
+
+        const response = await fetch(
+          `https://api.escuelajs.co/api/v1/auth/profile`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          },
+        );
+        if (!response.ok) {
+          this.handleLogout();
+        } else {
+          const data = await response.json();
+          //hiển thị lên UI
+          const profileName = root.querySelector(".profile span");
+          profileName.innerHTML = data.name;
+        }
+      } catch (e) {
+        //Có lỗi -> Logout
+        this.handleLogout();
+      }
+    }
   },
   render: function () {
     root.innerHTML = this.isLogin() ? this.dashboard() : this.loginForm();
@@ -126,7 +178,25 @@ const app = {
   start: function () {
     this.render();
     this.addEvent();
+    this.getProfile();
   },
 };
 
 app.start();
+
+/*
+Request 1 -> Server Verify Token => Response
+- Success -> OK
+- Faied (401) 
+-> Request Refresh Token => Server Verify Refresh Token
+- Failed (401) -> Logout
+- Success (Trả về Token mới) -> Lưu token vào localStorage -> Gọi lại Request 1
+
+Request 2 -> Sử dụng access mới
+
+Tránh cấp lại AccessToken nhiều lần
+
+Slider -> ok
+Khóa học -> hết hạn -> cấp lại access mới
+Bài viết -> hết hạn -> cấp lại access mới
+*/
