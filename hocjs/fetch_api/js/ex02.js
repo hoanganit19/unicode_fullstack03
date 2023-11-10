@@ -28,7 +28,8 @@ Request => Load Balancer
 - Request Authenticate (Email, Password) => Server Verify -> Khởi tạo 1 token (JWT) -> Trả về cho trình duyệt (Trình duyệt tự lưu lại)
 - Request Authorization (Header: Authorization: Bearer <token>) -> Server Verify => Lấy ra được thông tin User => Access Data (Database) => Trả về Data
 */
-
+import { client } from "./client.js";
+client.create({ serverApi: "https://api.escuelajs.co/api/v1" });
 const root = document.querySelector("#root");
 const app = {
   loginForm: function () {
@@ -85,6 +86,12 @@ const app = {
         this.handleLogin(e);
       }
     });
+    root.addEventListener("click", (e) => {
+      if (e.target.classList.contains("logout")) {
+        e.preventDefault();
+        this.handleLogout();
+      }
+    });
   },
   handleLogin: function (e) {
     e.preventDefault();
@@ -96,18 +103,14 @@ const app = {
   postLogin: async function (email, password, el) {
     //Add Loading
     this.loading(el);
-    const response = await fetch(`https://api.escuelajs.co/api/v1/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
+    const { response, data } = await client.post("/auth/login", {
+      email,
+      password,
     });
 
     //Remove Loading
     this.loading(el, false);
     if (response.ok) {
-      const data = await response.json();
       //Lưu token lại vào bộ nhớ trình duyệt: cookie, storage (localStorage, sessionStorage)
       localStorage.setItem("login_token", JSON.stringify(data));
       this.render(); //Update UI
@@ -150,19 +153,15 @@ const app = {
         let token = localStorage.getItem("login_token");
         const { access_token: accessToken } = JSON.parse(token);
 
-        const response = await fetch(
-          `https://api.escuelajs.co/api/v1/auth/profile`,
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          },
-        );
-        if (!response.ok) {
+        //Add token vào client
+        client.create({ token: accessToken });
+        const result = await client.get("/auth/profile");
+        //Nếu thành công -> result trả về object, bao gồm response và data
+        //Nếu thất bại -> result trả về false
+        if (!result) {
           this.handleLogout();
         } else {
-          const data = await response.json();
-          //hiển thị lên UI
+          const { data } = result;
           const profileName = root.querySelector(".profile span");
           profileName.innerHTML = data.name;
         }
@@ -199,4 +198,36 @@ Tránh cấp lại AccessToken nhiều lần
 Slider -> ok
 Khóa học -> hết hạn -> cấp lại access mới
 Bài viết -> hết hạn -> cấp lại access mới
+
+Lưu ý khi logout
+- Gọi api /logout --> Backend phải hỗ trợ (Yêu cầu back-end xây dựng)
+- Xóa storage
+
+Khi logout --> Token không bị xóa (Trừ phi hết hạn)
+--> Gặp vấn đề khi token bị lộ --> Hacker khai thác dữ liệu từ token đó
+
+--> Backend: Thêm token đó vào Blacklist khi user thực hiện logout
+
+--> Khi Authorization --> Check token có trong Blacklist hay không?
+
+Chốt lại các vấn đề: 
+- Hiểu và phân biệt được Authentication - Authorization
+- Phân biệt các hình thức Authentication: session/cookie, token
+- Hiểu được thế nào là JWT
+- Code chức năng: Authentication, Authorization
+- Phân biệt được accessToken, refreshToken, workflow
+- Kỹ thuật cấp lại accessToken khi hết hạn
+- Xử lý các bài toán bảo mật: blacklist, fake token,...
+
+Buổi sau: 
+- BOM = Browser Object Model
+- Date
+- Regex
+
+Lộ trình: 
+- Package Manager: npm, yarn
+- Module Bundler
+- React
+
+--> Kết thúc Front-End
 */
