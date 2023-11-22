@@ -1,0 +1,19 @@
+{
+  "name": "bundler",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel ./index.html --port=8080 --host=127.0.0.1 --open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.10.3",
+    "parcel": "^2.10.3"
+  },
+  "dependencies": {
+    "moment": "^2.29.4"
+  }
+}

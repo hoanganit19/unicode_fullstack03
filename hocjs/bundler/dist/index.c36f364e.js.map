@@ -1,0 +1,1 @@
+{"mappings":"AAAA,MAAM,OAAO,SAAS,aAAa,CAAC;AACpC,KAAK,SAAS,GAAG,CAAC,2BAAwB,CAAC","sources":["index.js"],"sourcesContent":["const root = document.querySelector(\"#root\");\r\nroot.innerHTML = `Hello Hoàng An Unicode 1`;\r\n"],"names":[],"version":3,"file":"index.c36f364e.js.map","sourceRoot":"/__parcel_source_root/"}
