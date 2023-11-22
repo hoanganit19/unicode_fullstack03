@@ -591,17 +591,36 @@ var _footer = require("./components/Footer");
 var _footerDefault = parcelHelpers.interopDefault(_footer);
 var _header = require("./components/Header");
 var _headerDefault = parcelHelpers.interopDefault(_header);
+var _home = require("./pages/Home");
+var _about = require("./pages/About");
+var _products = require("./pages/Products");
+var _contact = require("./pages/Contact");
 const App = ()=>{
+    const pathname = window.location.pathname;
+    let outlet;
+    switch(pathname){
+        case "/":
+            outlet = (0, _home.Home);
+            break;
+        case "/gioi-thieu":
+            outlet = (0, _about.About);
+            break;
+        case "/san-pham":
+            outlet = (0, _products.Products);
+            break;
+        case "/lien-he":
+            outlet = (0, _contact.Contact);
+            break;
+    }
     return `
   ${(0, _headerDefault.default)()}
-  <h1>H\u{1ECD}c l\u{1EAD}p tr\xecnh kh\xf4ng kh\xf3</h1>
-  <h2>${(0, _momentDefault.default)()}</h2>
+  ${outlet()}
   ${(0, _footerDefault.default)()}
   `;
 };
 exports.default = App;
 
-},{"./assets/style.scss":"ll5JQ","./components/Footer":"8pPOA","./components/Header":"hsJbF","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","moment/moment":"jwcsj"}],"ll5JQ":[function() {},{}],"8pPOA":[function(require,module,exports) {
+},{"./assets/style.scss":"ll5JQ","./components/Footer":"8pPOA","./components/Header":"hsJbF","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","moment/moment":"jwcsj","./pages/Home":"KEnRd","./pages/About":"dep5E","./pages/Products":"bBAw3","./pages/Contact":"izFEE"}],"ll5JQ":[function() {},{}],"8pPOA":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _footerModuleScss = require("../assets/footer.module.scss");
@@ -4375,6 +4394,38 @@ module.exports["btn"] = `nvALya_btn`;
     return hooks;
 });
 
-},{}]},["6hr94","bB7Pu"], "bB7Pu", "parcelRequire3298")
+},{}],"KEnRd":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Home", ()=>Home);
+const Home = ()=>{
+    return `<h1>Trang ch\u{1EE7}</h1>`;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dep5E":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "About", ()=>About);
+const About = ()=>{
+    return `<h1>Gi\u{1EDB}i thi\u{1EC7}u</h1>`;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bBAw3":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Products", ()=>Products);
+const Products = ()=>{
+    return `<h1>S\u{1EA3}n ph\u{1EA9}m</h1>`;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"izFEE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Contact", ()=>Contact);
+const Contact = ()=>{
+    return `<h1>Li\xean h\u{1EC7}</h1>`;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["6hr94","bB7Pu"], "bB7Pu", "parcelRequire3298")
 
 //# sourceMappingURL=index.3d214d75.js.map
