@@ -1,0 +1,19 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "abc": "echo Xin chào Unicode",
+    "unicode": "mkdir abc && cd abc && touch abc.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "datejs": "^1.0.0-rc3",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4"
+  }
+}
