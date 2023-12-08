@@ -1,28 +1,3 @@
 {
-  "todos": [
-    {
-      "title": "Học React",
-      "id": 1
-    },
-    {
-      "title": "Học NextJS",
-      "id": 2
-    },
-    {
-      "title": "Học Javascript",
-      "id": 3
-    },
-    {
-      "title": "Học PHP",
-      "id": 4
-    },
-    {
-      "title": "Học NodeJS",
-      "id": 5
-    },
-    {
-      "title": "Học Tester",
-      "id": 6
-    }
-  ]
+  "todos": []
 }
