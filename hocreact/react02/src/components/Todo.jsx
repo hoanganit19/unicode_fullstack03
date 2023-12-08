@@ -12,11 +12,26 @@ const Todo = () => {
     setTodoList(todos);
     setLoading(false);
   };
+  const addTodo = async (data) => {
+    const response = await fetch(todoApi, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.ok) {
+      getTodos();
+    }
+  };
 
   //Gọi hàm getTodos() --> Treo máy
   useEffect(() => {
     getTodos();
   }, []);
+  const handleAddTodo = (todo) => {
+    addTodo({ title: todo });
+  };
   return (
     <div>
       <h1>Todo App</h1>
@@ -27,7 +42,7 @@ const Todo = () => {
           todoList.map(({ id, title }) => <li key={id}>{title}</li>)
         )}
       </ul>
-      <TodoForm />
+      <TodoForm onAddTodo={handleAddTodo} todoList={todoList} />
     </div>
   );
 };
