@@ -1,13 +1,15 @@
-// import Counter from "./components/Counter";
-import Todo from "./components/Todo";
+import ImagePreview from "./components/ImagePreview";
 
 const App = () => {
-  // return <Counter />;
-  return <Todo />;
+  return (
+    <div>
+      <ImagePreview />
+    </div>
+  );
 };
 
 export default App;
 
 /*
-useEffect --> Xử lý các công việc ở dạng Side Effect (Công việc phụ, bên lề)
+Xây dựng chức năng xem trước ảnh
 */

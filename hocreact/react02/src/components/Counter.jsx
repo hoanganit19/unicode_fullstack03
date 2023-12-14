@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
 
-let total = 0;
+// let total = 0;
 const Counter = () => {
   const [count, setCount] = useState(0);
   console.log("Render: " + count);
-  if (count < 5) {
-    total += count;
-  }
+  // if (count < 5) {
+  //   total += count;
+  // }
 
   //   console.log("Total: " + total);
   // --> Lùi các công việc sang phía sau --> Side Effect
+  // useEffect(() => {
+  //   console.log("Count: " + count);
+  //   return () => {
+  //     console.log("Cleanup: " + count);
+  //   };
+  // });
   useEffect(() => {
-    console.log("Count: " + count);
+    console.log("Mouting");
     return () => {
-      console.log("Cleanup: " + count);
+      console.log("Unmouting");
     };
-  });
+  }, []);
   return (
     <div>
       <h1>Count: {count}</h1>
