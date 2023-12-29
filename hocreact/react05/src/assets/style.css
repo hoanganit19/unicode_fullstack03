@@ -1,0 +1,15 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.todo {
+  padding: 20px;
+}
+.todo .completed span {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.todo ul {
+  list-style: none;
+}
