@@ -1,23 +1,27 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { addTodo, removeTodo } from "../redux/actions/todoActions";
 const TodoList = () => {
   const todoList = useSelector((state) => state.todo.todoList);
   const [name, setName] = useState("");
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({
-      type: "todo/add",
-      payload: name,
-    });
+    dispatch(addTodo(name));
     setName("");
+  };
+  const handldRemove = (index) => {
+    if (confirm("Bạn có chắc chắn?")) {
+      dispatch(removeTodo(index));
+    }
   };
   return (
     <div>
       <ul>
         {todoList.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={index}>
+            {item} <button onClick={() => handldRemove(index)}>&times;</button>
+          </li>
         ))}
       </ul>
       <form onSubmit={handleSubmit}>

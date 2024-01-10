@@ -1,10 +1,16 @@
-import TodoList from "./components/TodoList";
+// import Counter from "./components/Counter";
+import Input from "./components/Input";
+// import TodoList from "./components/TodoList";
 
 const App = () => {
   return (
     <div>
-      <h1>useMemo</h1>
-      <TodoList />
+      {/* <h1>useMemo</h1>
+      <TodoList /> */}
+      {/* <Counter /> */}
+      <Input type="text" label="Tên" name="name" />
+      <Input type="email" label="Email" name="email" />
+      <Input type="number" label="Điện thoại" name="phone" />
     </div>
   );
 };

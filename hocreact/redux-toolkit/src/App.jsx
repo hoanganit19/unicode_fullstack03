@@ -1,15 +1,12 @@
 // import Counter from "./components/Counter";
-// import TodoList from "./components/TodoList";
-
-import Posts from "./components/Posts";
+import Todos from "./components/Todos";
 
 const App = () => {
   return (
     <div>
-      <h1>Redux</h1>
+      <h1>Học Redux Toolkit</h1>
       {/* <Counter /> */}
-      {/* <TodoList /> */}
-      <Posts />
+      <Todos />
     </div>
   );
 };
