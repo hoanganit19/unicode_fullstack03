@@ -1,8 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/style.scss";
 import { Routes, Route, NavLink } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
+import React from "react";
+import Home from "./pages/Home/Home";
+// import About from "./pages/About";
 import Products from "./pages/Products";
 import Contact from "./pages/Contact";
 import Error from "./pages/Error";
@@ -13,6 +14,9 @@ import MyCourse from "./pages/Profile/MyCourse";
 import Login from "./pages/Login";
 import ProfileLayout from "./layouts/ProfileLayout";
 import AuthMiddleware from "./middlewares/AuthMiddleware";
+import ScrollTop from "./components/ScrollTop";
+
+const About = React.lazy(() => import("./pages/About"));
 
 const App = () => {
   const handleClassName = ({ isActive }) => {
@@ -46,9 +50,17 @@ const App = () => {
           </ul>
         </div>
         <div className="col-9">
+          <ScrollTop />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/gioi-thieu" element={<About />} />
+            <Route
+              path="/gioi-thieu"
+              element={
+                <React.Suspense fallback={<p>Loading...</p>}>
+                  <About />
+                </React.Suspense>
+              }
+            />
             <Route path="/san-pham" element={<Products />} />
             <Route path="/san-pham/:path" element={<ProductDetail />} />
             <Route path="/lien-he" element={<Contact />} />
