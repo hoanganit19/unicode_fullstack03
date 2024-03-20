@@ -1,17 +1,17 @@
 <?php
 $users = [
     [
-        'name' => 'User 1',
+        'name' => 'Hoang An',
         'email' => 'user1@gmail.com',
         'age' => 32,
     ],
     [
-        'name' => 'User 2',
+        'name' => 'Hoang Anh',
         'email' => 'user2@gmail.com',
         'age' => 30,
     ],
     [
-        'name' => 'User 3',
+        'name' => 'Tuan Anh',
         'email' => 'user3@gmail.com',
         'age' => 28,
     ],
@@ -67,7 +67,65 @@ $number = 3;
 $users = array_map(function ($user) use ($number) {
     if ($user['age'] < 30) {
         $user['age'] += $number;
-
     }
     return $user;
 }, $users);
+
+//Tìm hiểu hàm in_array(), thực hiện yêu cầu sau
+/*
+Thêm khách hàng mới vào mảng users, nếu email bị trùng thì không cho thêm
+*/
+
+$newUser = [
+    'name' => 'User 6',
+    'email' => 'user6@gmail.com',
+    'age' => 30,
+];
+// $check = true;
+// foreach ($users as $user) {
+//     if ($user['email'] == $newUser['email']) {
+//         $check = false; 
+//         break;
+//     }
+// }
+
+// if ($check) {
+//     $users[] = $newUser;
+// }
+
+$check = in_array($newUser['email'], array_column($users, 'email'));
+if (!$check) {
+    $users[] = $newUser;
+}
+
+//Tìm kiếm: Trả về danh sách các users có tên chứa từ khóa
+$keyword = 'an'; //Lưu ý: Không phân biệt chữ hoa thường
+/*
+- Tạo 1 mảng mới
+- Lặp qua từng phần tử mảng cũ
+- Tìm kiếm thỏa mãn điều kiện của keyword
+- Lưu phần tử thỏa mãn điều kiện vào mảng mới
+*/
+// $result = [];
+// foreach ($users as $user){
+//     if (strpos(strtoupper($user['name']), strtoupper($keyword)) !== false) {
+//         $result[] = $user;
+//     }
+// }
+
+// $users = $result;
+
+$users = array_filter($users, function($user) use ($keyword) {
+    return strpos(strtoupper($user['name']), strtoupper($keyword)) !== false;
+});
+
+// $result = [];
+// foreach ($users as $user) {
+//     $result[] = $user;
+// }
+
+// $users = $result;
+
+$users = array_values($users); //Khởi tạo mảng mới có value giống mảng cũ nhưng index sắp xếp lại
+
+//Request, Response: $_GET, $_POST
