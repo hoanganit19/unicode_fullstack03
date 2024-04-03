@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './data.php';
 ?>
 <!DOCTYPE html>
@@ -12,6 +13,7 @@ require_once './data.php';
 
 <body>
     <h2>Danh sách sản phẩm</h2>
+    <h3>Giỏ hàng (<?php echo count($_SESSION['cart']) ?>) <a href="/cart/cart.php">Vào giỏ hàng</a></h3>
     <?php foreach ($products as $product): ?>
     <div>
         <h3><?php echo $product['name']; ?></h3>

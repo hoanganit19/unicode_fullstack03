@@ -32,19 +32,19 @@ foreach ($_SESSION['cart'] as $productId => $quantity):
     $count++;
     $product = getProduct($productId);
     ?>
-	            <tr>
-	                <td><?php echo $count; ?></td>
-	                <td><?php echo $product['name']; ?></td>
-	                <td><?php echo $product['price'] ?></td>
-	                <td>
-	                    <input type="number" name="quantity[<?php echo $productId ?>]" value="<?php echo $quantity; ?>">
-	                </td>
-	                <td><?php echo $product['price'] * $quantity; ?></td>
-	                <td>
-	                    <button>&times</button>
-	                </td>
-	            </tr>
-	            <?php endforeach;?>
+            <tr>
+                <td><?php echo $count; ?></td>
+                <td><?php echo $product['name']; ?></td>
+                <td><?php echo $product['price'] ?></td>
+                <td>
+                    <input type="number" name="quantity[<?php echo $productId ?>]" value="<?php echo $quantity; ?>">
+                </td>
+                <td><?php echo $product['price'] * $quantity; ?></td>
+                <td>
+                    <button name="delete[<?php echo $productId ?>]">&times</button>
+                </td>
+            </tr>
+            <?php endforeach;?>
         </table>
         <hr>
         <button name="update_cart">Cập nhật giỏ hàng</button>

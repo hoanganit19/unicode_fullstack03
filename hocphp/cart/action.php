@@ -19,5 +19,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['cart'][$productId] = $quantity;
         }
     }
-    header("Location: cart.php");
+    header("Location: index.php");
 }
