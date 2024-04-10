@@ -34,3 +34,65 @@ Database Server
     - Database 2
     - Database n
 ```
+
+Kiểu dữ liệu trong MySQL
+
+1. Kiểu số
+
+- int, tinyint, bigint,... --> Số nguyên
+- float, double --> Số thực
+
+2. Chuỗi
+
+- char(length): Ký tự
+- varchar(length): Chuỗi có độ dài tối đa là length
+- text
+- mediumtext
+- longtext
+
+3. Thời gian
+
+- date
+- time
+- datetime --> Lưu trữ cả ngày tháng năm và thời gian
+- timestamp --> Lưu trữ giống datetime, khác việc tự động cập nhật múi giờ
+
+Lưu ý: Khi làm việc với Database, có 2 bước
+
+1. Tạo cấu trúc Database
+
+- Tạo database
+- Tạo các table
+- Tạo các field tương ứng với kiểu dữ liệu
+- Thiết lập các ràng buộc
+- Thiết lập quan hệ
+
+--> Có thể sử dụng công cụ hỗ trợ
+
+2. Thực hiện các truy vấn
+
+- CREATE: Thêm
+- UPDATE: Cập nhật
+- DELETE: Xóa
+- SELECT: Truy vấn lấy dữ liệu (Phức tạp nhất)
+
+--> Học các câu lệnh truy vấn (SQL)
+
+## Toán tử trong SQL
+
+```
+>, >=, <, <=, =, <> (Hoặc !=)
+AND, OR, NOT
+IN
+LIKE
+IS NULL
+BETWEEN
+```
+
+## Truy vấn dữ liệu
+
+```
+SELECT tencot1, tencot2,... FROM tenbang WHERE dieukien
+```
+
+Lưu ý: Nếu muốn chọn tất cả cột --> Khai báo `*` ở phía sau SELECT
