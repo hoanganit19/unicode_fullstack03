@@ -30,5 +30,5 @@ require_once 'functions.php';
 // ]);
 // var_dump($status);
 
-$status = delete("users");
-var_dump($status);
+// $status = delete("users");
+// var_dump($status);
