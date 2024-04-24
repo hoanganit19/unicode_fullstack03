@@ -1,6 +1,6 @@
 <?php
-require_once 'connect.php';
-require_once 'functions.php';
+require_once './includes/connect.php';
+require_once './includes/functions.php';
 $limit = 3;
 $page = 1;
 if (!empty($_GET['page']) && is_numeric($_GET['page'])) {
@@ -42,6 +42,7 @@ $users = fetchAll($sql);
 <body>
     <div class="container">
         <h2>Danh sách người dùng</h2>
+        <a href="/php_mysql/add.php" class="btn btn-primary mb-2">Thêm mới</a>
         <form action="" class="mb-3">
             <div class="row">
                 <div class="col-3">

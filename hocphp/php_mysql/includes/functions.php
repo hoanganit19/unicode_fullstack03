@@ -96,3 +96,17 @@ function goPage($page = 1)
 
     return '?page=' . $page;
 }
+
+function redirect($path)
+{
+    header("Location: $path");
+    exit;
+}
+
+function error($errors, $fieldName)
+{
+    if (!empty($errors[$fieldName])) {
+        return reset($errors[$fieldName]);
+    }
+    return null;
+}
