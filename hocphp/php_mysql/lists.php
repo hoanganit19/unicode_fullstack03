@@ -1,6 +1,8 @@
 <?php
+session_start();
 require_once './includes/connect.php';
 require_once './includes/functions.php';
+require_once './includes/session.php';
 $limit = 3;
 $page = 1;
 if (!empty($_GET['page']) && is_numeric($_GET['page'])) {
@@ -28,6 +30,9 @@ $totalPages = ceil($totalRows / $limit);
 $sql = "SELECT * FROM users $filter ORDER BY id DESC LIMIT $limit OFFSET $offset";
 
 $users = fetchAll($sql);
+
+$msg = getFlash('msg');
+$msgType = getFlash('msg_type');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,6 +71,7 @@ $users = fetchAll($sql);
                 </div>
             </div>
         </form>
+        <?php echo showMessage($msg, $msgType); ?>
         <table class="table table-bordered">
             <tr>
                 <th width="5%">STT</th>
@@ -82,7 +88,7 @@ $users = fetchAll($sql);
                 <td><?php echo $user->email; ?></td>
                 <td><?php echo $user->status ? '<span class="badge bg-success">Kích hoạt</span>' : '<span class="badge bg-danger">Chưa kích hoạt</span>' ?>
                 </td>
-                <td><a href="#" class="btn btn-warning">Sửa</a></td>
+                <td><a href="/php_mysql/edit.php?id=<?php echo $user->id; ?>" class="btn btn-warning">Sửa</a></td>
                 <td><a href="#" class="btn btn-danger">Sửa</a></td>
             </tr>
             <?php endforeach;?>

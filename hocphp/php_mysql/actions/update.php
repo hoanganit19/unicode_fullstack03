@@ -4,6 +4,7 @@ require_once '../includes/connect.php';
 require_once '../includes/functions.php';
 require_once '../includes/session.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = $_GET['id'];
     $errors = [];
     if (!$_POST['name']) {
         $errors['name']['required'] = 'Tên bắt buộc phải nhập';
@@ -15,16 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors['email']['email'] = 'Email không đúng định dạng';
     } else {
         //Truy vấn xem có trùng lặp không?
-        $sql = "SELECT id FROM users WHERE email = :email";
-        $count = rowCount($sql, ['email' => $_POST['email']]);
+        $sql = "SELECT id FROM users WHERE email = :email AND id != :id";
+        $count = rowCount($sql, ['email' => $_POST['email'], 'id' => $id]);
         if ($count) {
             $errors['email']['unique'] = 'Email đã tồn tại';
         }
     }
 
-    if (!$_POST['password']) {
-        $errors['password']['required'] = 'Mật khẩu bắt buộc phải nhập';
-    } elseif (strlen($_POST['password']) < 6) {
+    if ($_POST['password'] && strlen($_POST['password']) < 6) {
         $errors['password']['min'] = 'Mật khẩu phải từ 6 ký tự';
     }
 
@@ -39,26 +38,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($errors)) {
         //Không có lỗi
         //Thêm dữ liệu vào database --> Chuyển hướng sang trang lists.php
-        $data = [
-            'name' => $_POST['name'],
-            'email' => $_POST['email'],
-            'password' => password_hash($_POST['password'], PASSWORD_BCRYPT),
-            'status' => $_POST['status'],
-        ];
-        $status = create('users', $data);
-        if ($status) {
-            $msg = "Thêm người dùng thành công";
-            $msgType = 'success';
-        } else {
-            $msg = "Thêm người dùng không thành công";
-            $msgType = 'error';
-        }
-        setSession('msg', $msg);
-        setSession('msg_type', $msgType);
-        redirect("/php_mysql/lists.php");
+        // $data = [
+        //     'name' => $_POST['name'],
+        //     'email' => $_POST['email'],
+        //     'password' => password_hash($_POST['password'], PASSWORD_BCRYPT),
+        //     'status' => $_POST['status'],
+        // ];
+        // $status = create('users', $data);
+        // if ($status) {
+        //     $msg = "Thêm người dùng thành công";
+        //     $msgType = 'success';
+        // } else {
+        //     $msg = "Thêm người dùng không thành công";
+        //     $msgType = 'error';
+        // }
+        // setSession('msg', $msg);
+        // setSession('msg_type', $msgType);
+
     } else {
         //Có lỗi
         setSession('errors', $errors);
-        redirect("/php_mysql/add.php");
+        setSession('old', $_POST);
+
     }
+
+    redirect("/php_mysql/edit.php?id=" . $id);
 }
+
+/*
+Yêu cầu Validate:
+- Tên: Như cũ
+- Email: Như cũ tuy nhiên khi kiểm tra trùng với Database phải loại trừ user đang sửa
+- Password: Chỉ validate khi thay đổi password (Không bắt buộc phải đổi)
+
+Cập nhật database
+ */

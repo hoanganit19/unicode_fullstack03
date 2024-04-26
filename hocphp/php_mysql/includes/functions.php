@@ -110,3 +110,19 @@ function error($errors, $fieldName)
     }
     return null;
 }
+
+function showMessage($msg, $msgType = 'success')
+{
+
+    $className = $msgType == 'success' ? 'success' : 'danger';
+    $html = '<div class="alert alert-' . $msgType . '">' . $msg . '</div>';
+    return $msg ? $html : '';
+}
+
+function old($data, $name, $default = null)
+{
+    if (isset($data[$name])) {
+        return $data[$name];
+    }
+    return $default ?? '';
+}
