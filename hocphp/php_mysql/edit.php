@@ -20,6 +20,8 @@ if (!empty($_GET['id'])) {
     echo 'Không tồn tại';
     die;
 }
+$msg = getFlash('msg');
+$msgType = getFlash('msg_type');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +36,7 @@ if (!empty($_GET['id'])) {
 <body>
     <div class="container">
         <h2>Cập nhật người dùng</h2>
+        <?php echo showMessage($msg, $msgType); ?>
         <form action="/php_mysql/actions/update.php?id=<?php echo $id; ?>" method="POST">
             <div class="row">
                 <div class="col-6">

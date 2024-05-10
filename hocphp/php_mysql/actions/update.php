@@ -38,22 +38,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($errors)) {
         //Không có lỗi
         //Thêm dữ liệu vào database --> Chuyển hướng sang trang lists.php
-        // $data = [
-        //     'name' => $_POST['name'],
-        //     'email' => $_POST['email'],
-        //     'password' => password_hash($_POST['password'], PASSWORD_BCRYPT),
-        //     'status' => $_POST['status'],
-        // ];
-        // $status = create('users', $data);
-        // if ($status) {
-        //     $msg = "Thêm người dùng thành công";
-        //     $msgType = 'success';
-        // } else {
-        //     $msg = "Thêm người dùng không thành công";
-        //     $msgType = 'error';
-        // }
-        // setSession('msg', $msg);
-        // setSession('msg_type', $msgType);
+        $data = [
+            'name' => $_POST['name'],
+            'email' => $_POST['email'],
+            'status' => $_POST['status'],
+        ];
+        if (!empty($_POST['password'])) {
+            $data['password'] = password_hash($_POST['password'], PASSWORD_BCRYPT);
+        }
+        $status = update('users', $data, "id = :id", ['id' => $id]);
+        if ($status) {
+            $msg = "Cập nhật dùng thành công";
+            $msgType = 'success';
+        } else {
+            $msg = "Cập nhật người dùng không thành công";
+            $msgType = 'error';
+        }
+        setSession('msg', $msg);
+        setSession('msg_type', $msgType);
 
     } else {
         //Có lỗi
@@ -72,4 +74,7 @@ Yêu cầu Validate:
 - Password: Chỉ validate khi thay đổi password (Không bắt buộc phải đổi)
 
 Cập nhật database
+- Name
+- Email
+- Password --> Check xem người có nhập ko? Nếu nhập mới thay đổi
  */

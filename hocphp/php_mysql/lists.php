@@ -72,9 +72,12 @@ $msgType = getFlash('msg_type');
             </div>
         </form>
         <?php echo showMessage($msg, $msgType); ?>
+
         <table class="table table-bordered">
             <tr>
-                <th width="5%">STT</th>
+                <th width="5%">
+                    <input type="checkbox">
+                </th>
                 <th>Tên</th>
                 <th>Email</th>
                 <th>Trạng thái</th>
@@ -83,31 +86,84 @@ $msgType = getFlash('msg_type');
             </tr>
             <?php foreach ($users as $key => $user): ?>
             <tr>
-                <td><?php echo $key + 1 ?></td>
+                <td>
+                    <input type="checkbox" class="delete-item" value="<?php echo $user->id; ?>" />
+                </td>
                 <td><?php echo $user->name; ?></td>
                 <td><?php echo $user->email; ?></td>
                 <td><?php echo $user->status ? '<span class="badge bg-success">Kích hoạt</span>' : '<span class="badge bg-danger">Chưa kích hoạt</span>' ?>
                 </td>
                 <td><a href="/php_mysql/edit.php?id=<?php echo $user->id; ?>" class="btn btn-warning">Sửa</a></td>
-                <td><a href="#" class="btn btn-danger">Sửa</a></td>
+                <td><a onclick="handleDelete(event, <?php echo $user->id ?>)" href="/php_mysql/actions/delete.php"
+                        class="btn btn-danger">Xóa</a>
+                </td>
             </tr>
             <?php endforeach;?>
         </table>
-        <nav class="d-flex justify-content-end">
-            <ul class="pagination">
-                <?php if ($page > 1): ?>
-                <li class="page-item"><a class="page-link" href="<?php echo goPage($page - 1) ?>">Trước</a></li>
-                <?php endif;?>
-                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                <li class="page-item"><a class="page-link <?php echo $i == $page ? 'active' : '' ?>"
-                        href="<?php echo goPage($i); ?>"><?php echo $i; ?></a></li>
-                <?php endfor;?>
-                <?php if ($page < $totalPages): ?>
-                <li class="page-item"><a class="page-link" href="<?php echo goPage($page + 1) ?>">Sau</a></li>
-                <?php endif;?>
-            </ul>
-        </nav>
+        <div class="d-flex justify-content-between align-items-center">
+            <form method="post" onsubmit="return confirm('Bạn có chắc chắn?')" action="/php_mysql/actions/deletes.php"
+                class="form-deletes">
+                <input type="hidden" name="ids" value="">
+                <button class="btn btn-danger">Xóa đã chọn</button>
+            </form>
+            <nav class="d-flex justify-content-end">
+                <ul class="pagination">
+                    <?php if ($page > 1): ?>
+                    <li class="page-item"><a class="page-link" href="<?php echo goPage($page - 1) ?>">Trước</a></li>
+                    <?php endif;?>
+                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <li class="page-item"><a class="page-link <?php echo $i == $page ? 'active' : '' ?>"
+                            href="<?php echo goPage($i); ?>"><?php echo $i; ?></a></li>
+                    <?php endfor;?>
+                    <?php if ($page < $totalPages): ?>
+                    <li class="page-item"><a class="page-link" href="<?php echo goPage($page + 1) ?>">Sau</a></li>
+                    <?php endif;?>
+                </ul>
+            </nav>
+        </div>
+
     </div>
+    <script>
+    function handleDelete(event, id) {
+        event.preventDefault();
+        if (confirm('Bạn có chắc chắn?')) {
+            const href = event.target.href;
+            const form = document.createElement('form');
+            form.method = 'post';
+            form.action = href;
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.value = id;
+            input.name = 'id';
+            form.append(input);
+            document.body.append(form);
+            console.log(form);
+            form.submit();
+        }
+
+    }
+
+    function handleChangeDelete() {
+        const deleteItems = document.querySelectorAll('.delete-item');
+        let ids = [];
+        const formDeletes = document.querySelector('.form-deletes');
+        deleteItems.forEach((item) => {
+            item.addEventListener('change', ({
+                target
+            }) => {
+                if (target.checked) {
+                    ids.push(+target.value);
+                } else {
+                    ids = ids.filter((id) => id !== +target.value)
+                }
+
+                formDeletes.children[0].value = ids.join();
+            })
+        })
+    }
+
+    handleChangeDelete();
+    </script>
 </body>
 
 </html>

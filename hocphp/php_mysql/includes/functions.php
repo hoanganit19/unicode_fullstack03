@@ -55,6 +55,7 @@ function delete($table, $condition = null, $conditionData = [])
     if ($condition) {
         $sql .= " WHERE {$condition}";
     }
+
     $statement = $conn->prepare($sql);
     return $statement->execute($conditionData);
 
@@ -115,7 +116,7 @@ function showMessage($msg, $msgType = 'success')
 {
 
     $className = $msgType == 'success' ? 'success' : 'danger';
-    $html = '<div class="alert alert-' . $msgType . '">' . $msg . '</div>';
+    $html = '<div class="alert alert-' . $className . '">' . $msg . '</div>';
     return $msg ? $html : '';
 }
 
