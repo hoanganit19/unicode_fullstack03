@@ -19,16 +19,15 @@ if (!empty($_GET['status']) && ($_GET['status'] == 'active' || $_GET['status'] =
 if (!empty($_GET['keyword'])) {
     $keyword = $_GET['keyword'];
     //WHERE LIKE
-    $filter .= " AND (name LIKE '%{$keyword}%' OR email LIKE '%{$keyword}%')";
+    $filter .= " AND (name LIKE '%{$keyword}%' OR email LIKE '%{$keyword}%' OR phones.phone LIKE '%{$keyword}%')";
 }
 
 //Tính tổng số trang = Tổng số bản ghi / Số bản ghi trên 1 trang (limit)
-$totalRows = rowCount("SELECT * FROM users $filter");
+$totalRows = rowCount("SELECT users.id FROM users LEFT JOIN phones ON users.id=phones.user_id $filter");
 
 $totalPages = ceil($totalRows / $limit);
 
-$sql = "SELECT * FROM users $filter ORDER BY id DESC LIMIT $limit OFFSET $offset";
-
+$sql = "SELECT users.*, phones.phone FROM users LEFT JOIN phones ON users.id=phones.user_id $filter ORDER BY id DESC LIMIT $limit OFFSET $offset";
 $users = fetchAll($sql);
 
 $msg = getFlash('msg');
@@ -80,6 +79,7 @@ $msgType = getFlash('msg_type');
                 </th>
                 <th>Tên</th>
                 <th>Email</th>
+                <th>Điện thoại</th>
                 <th>Trạng thái</th>
                 <th width="5%">Sửa</th>
                 <th width="5%">Xóa</th>
@@ -91,6 +91,7 @@ $msgType = getFlash('msg_type');
                 </td>
                 <td><?php echo $user->name; ?></td>
                 <td><?php echo $user->email; ?></td>
+                <td><?php echo $user->phone; ?></td>
                 <td><?php echo $user->status ? '<span class="badge bg-success">Kích hoạt</span>' : '<span class="badge bg-danger">Chưa kích hoạt</span>' ?>
                 </td>
                 <td><a href="/php_mysql/edit.php?id=<?php echo $user->id; ?>" class="btn btn-warning">Sửa</a></td>
@@ -167,3 +168,15 @@ $msgType = getFlash('msg_type');
 </body>
 
 </html>
+
+<?php
+/*
+Yêu cầu 1: Trả về số điện thoại
+Yêu cầu 2: Tìm kiếm theo số điện thoại
+
+Buổi sau:
+- Đăng nhập
+- Đăng ký
+- OOP ==> Lập trình hướng đối tượng
+ */
+?>

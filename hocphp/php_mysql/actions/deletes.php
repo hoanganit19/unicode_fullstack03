@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $params = str_repeat('?,', count(explode(',', $ids)));
         $params = rtrim($params, ',');
-
+        delete('phones', "user_id IN($params)", explode(',', $ids));
         $status = delete('users', "id IN($params)", explode(',', $ids));
         if ($status) {
             $msg = "Xóa thành công";

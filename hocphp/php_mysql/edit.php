@@ -9,7 +9,7 @@ $old = getFlash('old');
 if (!empty($_GET['id'])) {
     $id = $_GET['id'];
 
-    $sql = "SELECT * FROM users WHERE id = :id";
+    $sql = "SELECT users.*, phones.phone FROM users LEFT JOIN phones ON users.id=phones.user_id WHERE users.id = :id";
     $user = fetch($sql, ['id' => $id]);
 
     if (!$user) {
@@ -68,6 +68,14 @@ $msgType = getFlash('msg_type');
                         <input type="password" name="confirm_password" class="form-control"
                             placeholder="Nhập lại mật khẩu...">
                         <span class="text-danger"><?php echo error($errors, 'confirm_password') ?></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="">Điện thoại</label>
+                        <input type="text" name="phone" class="form-control" placeholder="Điện thoại..."
+                            value="<?php echo old($old, 'phone', $user->phone) ?>">
+                        <span class="text-danger"><?php echo error($errors, 'phone') ?></span>
                     </div>
                 </div>
                 <div class="col-6">

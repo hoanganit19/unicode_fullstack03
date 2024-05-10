@@ -48,6 +48,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         $status = update('users', $data, "id = :id", ['id' => $id]);
         if ($status) {
+            if (!empty($_POST['phone'])) {
+                $phoneRow = rowCount("SELECT id FROM phones WHERE user_id=:id", ['id' => $id]);
+                if (!$phoneRow) {
+                    create('phones', [
+                        'phone' => $_POST['phone'],
+                        'user_id' => $id,
+                    ]);
+                } else {
+                    update('phones', [
+                        'phone' => $_POST['phone'],
+                    ], "user_id = :id", ['id' => $id]);
+                }
+
+            } else {
+                delete('phones', "user_id=:id", ['id' => $id]);
+            }
+
             $msg = "Cập nhật dùng thành công";
             $msgType = 'success';
         } else {

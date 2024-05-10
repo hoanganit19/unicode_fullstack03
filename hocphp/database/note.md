@@ -96,3 +96,50 @@ SELECT tencot1, tencot2,... FROM tenbang WHERE dieukien
 ```
 
 Lưu ý: Nếu muốn chọn tất cả cột --> Khai báo `*` ở phía sau SELECT
+
+## Relationship
+
+- Các kiểu quan hệ trong Database
+- Áp dụng khi có từ 2 table trở lên
+
+* Quan hệ 1-1: 1 bản ghi của bảng này sẽ chỉ liên kết tới 1 bản ghi của bảng khác
+  Ví dụ: 1 users chỉ có 1 CCCD
+* Quan hệ 1-N: 1 bản ghi của bảng này sẽ liên kết tới nhiều bản ghi của bảng khác
+  Ví dụ:
+  1 users có thể có nhiều cuốn sách
+  1 cuốn sách chỉ thuộc 1 user
+* Quan hệ N-N: 1 bản ghi của bảng này sẽ liên kết tới nhiều bản ghi của bảng khác và ngược lại
+  Ví dụ:
+  1 tác giả có thể có nhiều cuốn sách
+  1 cuốn sách có thể thuộc nhiều tác giả
+
+Trong SQL muốn thể hiện quan hệ --> Dùng khóa ngoại (Liên kết giữa các bảng)
+
+## Nối bảng
+
+1. Inner Join
+
+```
+SELECT column1, column2,...
+FROM table1
+INNER JOIN table2
+ON table1.tencot = table2.tencot
+```
+
+2. Left Join
+
+```
+SELECT column1, column2,...
+FROM table1
+LEFT JOIN table2
+ON table1.tencot = table2.tencot
+```
+
+3. Right Join
+
+```
+SELECT column1, column2,...
+FROM table1
+RIGHT JOIN table2
+ON table1.tencot = table2.tencot
+```

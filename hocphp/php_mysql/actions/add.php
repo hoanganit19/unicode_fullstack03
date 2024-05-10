@@ -47,6 +47,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ];
         $status = create('users', $data);
         if ($status) {
+
+            //Lấy id của user vừa insert
+            $userId = lastId();
+            if (!empty($_POST['phone'])) {
+                create('phones', ['phone' => $_POST['phone'], 'user_id' => $userId]);
+            }
+
             $msg = "Thêm người dùng thành công";
             $msgType = 'success';
         } else {

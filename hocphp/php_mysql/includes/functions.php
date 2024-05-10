@@ -69,6 +69,12 @@ function rowCount($sql, $data = [])
     return $statement->rowCount(); //Trả về số dòng của câu lệnh SQL
 }
 
+function lastId()
+{
+    global $conn;
+    return $conn->lastInsertId(); //Trả về id vừa thực hiện câu lệnh Insert
+}
+
 function goPage($page = 1)
 {
     //Xử lý query string

@@ -51,6 +51,13 @@ $errors = getFlash('errors');
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
+                        <label for="">Điện thoại</label>
+                        <input type="text" name="phone" class="form-control" placeholder="Phone...">
+                        <span class="text-danger"><?php echo error($errors, 'phone') ?></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
                         <label for="">Trạng thái</label>
                         <select name="status" class="form-select">
                             <option value="0">Chưa kích hoạt</option>
@@ -83,4 +90,10 @@ $errors = getFlash('errors');
 2. Thêm dữ liệu vào database
 - Nếu thất bại --> Thông báo lỗi tạo trang thêm
 - Nếu thành công --> Chuyển hướng qua trang lists.php và thông báo lỗi
+
+Thêm dữ liệu vào 2 bảng
+
+- Thêm dữ liệu vào bảng users trước
+- Lấy id vừa thêm
+- Thêm dữ liệu vào bảng phones với id vừa lấy được
  */
