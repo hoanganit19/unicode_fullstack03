@@ -133,3 +133,37 @@ function old($data, $name, $default = null)
     }
     return $default ?? '';
 }
+
+function authenticate()
+{
+    $user = getSession('user');
+
+    if ($user) {
+        $userDb = fetch("SELECT * FROM users WHERE id=:id", ['id' => $user->id]);
+        if (!$userDb) {
+            redirect('/php_mysql/auth/login.php');
+        } else if (!$userDb->status) {
+            redirect('/php_mysql/auth/block.php');
+        } else {
+            getSession('user', $user);
+        }
+    } else {
+        redirect('/php_mysql/auth/login.php');
+    }
+
+}
+
+function guest()
+{
+    $user = getSession('user');
+    if ($user) {
+        redirect('/php_mysql/lists.php');
+    }
+}
+
+function getUserLogin()
+{
+    $user = getSession('user');
+
+    return $user;
+}

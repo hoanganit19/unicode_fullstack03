@@ -3,6 +3,10 @@ session_start();
 require_once './includes/connect.php';
 require_once './includes/functions.php';
 require_once './includes/session.php';
+//Kiểm tra đăng nhập
+authenticate();
+$userLogin = getUserLogin();
+
 $limit = 3;
 $page = 1;
 if (!empty($_GET['page']) && is_numeric($_GET['page'])) {
@@ -45,7 +49,14 @@ $msgType = getFlash('msg_type');
 
 <body>
     <div class="container">
-        <h2>Danh sách người dùng</h2>
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Danh sách người dùng</h2>
+            <ul class="list-unstyled d-flex gap-3 align-item-center">
+                <li>Chào bạn: <?php echo $userLogin->name; ?></li>
+                <li><a href="#">Tài khoản</a></li>
+                <li><a href="/php_mysql/auth/logout.php">Đăng xuất</a></li>
+            </ul>
+        </div>
         <a href="/php_mysql/add.php" class="btn btn-primary mb-2">Thêm mới</a>
         <form action="" class="mb-3">
             <div class="row">
