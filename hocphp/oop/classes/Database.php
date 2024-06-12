@@ -8,7 +8,6 @@ class Database
     private $port = '3307';
     private $driver = 'mysql';
     private $conn = null;
-    protected $table = 'users';
     public function __construct()
     {
         //Kết nối
@@ -45,7 +44,7 @@ class Database
         return $statement->fetch(PDO::FETCH_OBJ);
     }
 
-    public function create($table, $data)
+    public function create($table, $data = [])
     {
         $sql = $this->buildQueryInsert($table, $data);
         $statement = $this->query($sql, $data);

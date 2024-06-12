@@ -1,14 +1,5 @@
 <?php
-class User extends Database
+class User extends Model
 {
-    public function __construct()
-    {
-        // echo 'user construct';
-        parent::__construct(); //Gọi hàm __construct() của cha
-    }
-    public function all()
-    {
-        echo $this->table . '<br/>';
-        return $this->fetchAll("SELECT * FROM users");
-    }
+    protected $table = 'users';
 }
