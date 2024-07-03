@@ -12,6 +12,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $table = 'users'; //Khai báo table
+    // protected $primaryKey = 'id'; //Khai báo primary key
 
     /**
      * The attributes that are mass assignable.
