@@ -4,6 +4,7 @@
 @if (session('msg'))
 <div class="alert alert-success">{{session('msg')}}</div>
 @endif
+<a href="/users/create" class="btn btn-primary mb-2">Thêm mới</a>
 @include('users.partials.filter-form')
 <div class="input-group mb-3">
     <a href="{{getOrderByUrl('latest')}}" class="btn btn-primary {{request('order-by') === 'latest' || !request('order-by') ? 'active' : ''}}">Mới nhất</a>
@@ -12,6 +13,9 @@
 <table class="table table-bordered">
     <thead>
         <tr>
+            <th width="5%">
+                <input type="checkbox">
+            </th>
             <th width="5%">STT</th>
             <th>Tên</th>
             <th>Email</th>
@@ -24,6 +28,9 @@
     <tbody>
         @foreach ($users as $key => $user)
         <tr>
+            <td>
+                <input type="checkbox" class="checkbox-delete" value="{{$user->id}}" />
+            </td>
             <td>{{$key + 1}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
@@ -49,6 +56,14 @@
         @endforeach
     </tbody>
 </table>
+<div class="d-flex justify-content-between align-items-center">
+    <form action="/users/deletes" method="post" onsubmit="return confirm('Bạn chắc không?')">
+        <input type="hidden" name="ids" class="id-delete" />
+        <button class="btn btn-danger">Xóa đã chọn</button>
+        @csrf
+    </form>
+    {{ $users->links('vendor.pagination.user-paginate') }}
+</div>
 @endsection
 <form action="" method="post" class="delete-form">
     @csrf

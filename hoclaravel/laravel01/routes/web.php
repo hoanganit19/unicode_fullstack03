@@ -12,5 +12,6 @@ Route::post('/users/create', [UserController::class, 'store']);
 Route::get('/users/{user}/edit', [UserController::class, 'edit']);
 Route::post('/users/{user}/edit', [UserController::class, 'update']);
 Route::post('/users/{user}/delete', [UserController::class, 'delete']);
+Route::post('/users/deletes', [UserController::class, 'deletes']);
 
 //Request ==> public/index.php ==> bootstrap ==> Provider ==> Middleware ==> Route ==> Middleware ==> Controller ==> Action ==> View

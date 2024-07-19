@@ -31,7 +31,7 @@ class UserController extends Controller
         }
         // dd($query->ddRawSql());
 
-        $users = $query->get(); //Trả về tất cả
+        $users = $query->paginate(config('paginate.limit'))->withQueryString(); //Trả về tất cả
 
         return view('users.index', compact('users'));
     }
@@ -49,8 +49,25 @@ class UserController extends Controller
 
     public function store(Request $request, User $user)
     {
+        //Validate ==> Nếu lỗi, tự động back về request trước
+        $request->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required|same:password',
+        ], [
+            'required' => ':attribute bắt buộc phải nhập',
+            'min' => ':attribute phải từ :min ký tự',
+            'email' => ':attribute không đúng định dạng email',
+            'unique' => ':attribute đã tồn tại trên hệ thống',
+            'same' => ':attribute không khớp với mật khẩu',
+        ], [
+            'name' => "Tên",
+            'email' => 'Địa chỉ email',
+            'password' => 'Mật khẩu',
+            'confirm_password' => 'Nhập lại mật khẩu',
+        ]);
         //1. Request
-
         $name = $request->name;
         $email = $request->email;
         $password = $request->password;
@@ -87,6 +104,18 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect('/users')->with('msg', 'Xóa thành công');
+    }
+
+    public function deletes(Request $request)
+    {
+        //Tìm hiểu: whereIn()
+        if (!$request->ids) {
+            return redirect('/users')->with('msg', 'Chọn người dùng để xóa');
+        }
+        $ids = explode(',', $request->ids);
+        User::whereIn('id', $ids)->delete();
+
+        return redirect('/users')->with('msg', 'Đã xóa ' . count($ids) . ' người dùng');
     }
 }
 
