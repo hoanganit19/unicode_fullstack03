@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Phone;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -47,26 +49,10 @@ class UserController extends Controller
         return view('users.create');
     }
 
-    public function store(Request $request, User $user)
+    public function store(UserRequest $request, User $user)
     {
         //Validate ==> Nếu lỗi, tự động back về request trước
-        $request->validate([
-            'name' => 'required|min:3',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6',
-            'confirm_password' => 'required|same:password',
-        ], [
-            'required' => ':attribute bắt buộc phải nhập',
-            'min' => ':attribute phải từ :min ký tự',
-            'email' => ':attribute không đúng định dạng email',
-            'unique' => ':attribute đã tồn tại trên hệ thống',
-            'same' => ':attribute không khớp với mật khẩu',
-        ], [
-            'name' => "Tên",
-            'email' => 'Địa chỉ email',
-            'password' => 'Mật khẩu',
-            'confirm_password' => 'Nhập lại mật khẩu',
-        ]);
+
         //1. Request
         $name = $request->name;
         $email = $request->email;
@@ -76,6 +62,9 @@ class UserController extends Controller
         $user->email = $email;
         $user->password = Hash::make($password);
         $user->save();
+
+        $phone = new Phone(['value' => $request->phone]);
+        $user->phone()->save($phone);
         //3. Response
         $request->session()->flash('msg', 'Đã thêm người dùng');
         return redirect('/users');
@@ -87,8 +76,32 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
+        //Validate
+        // $rules = [
+        //     'name' => 'required|min:3',
+        //     'email' => 'required|email|unique:users,email,' . $user->id,
+        // ];
+
+        // if ($request->password) {
+        //     $rules['password'] = 'required|min:6';
+        //     $rules['confirm_password'] = 'required|same:password';
+        // }
+
+        // $request->validate($rules, [
+        //     'required' => ':attribute bắt buộc phải nhập',
+        //     'min' => ':attribute phải từ :min ký tự',
+        //     'email' => ':attribute không đúng định dạng email',
+        //     'unique' => ':attribute đã tồn tại trên hệ thống',
+        //     'same' => ':attribute không khớp với mật khẩu',
+        // ], [
+        //     'name' => "Tên",
+        //     'email' => 'Địa chỉ email',
+        //     'password' => 'Mật khẩu',
+        //     'confirm_password' => 'Nhập lại mật khẩu',
+        // ]);
+        //Xử lý
         $name = $request->name;
         $email = $request->email;
         $password = $request->password;

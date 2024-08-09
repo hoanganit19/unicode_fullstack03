@@ -19,6 +19,7 @@
             <th width="5%">STT</th>
             <th>Tên</th>
             <th>Email</th>
+            <th>Điện thoại</th>
             <th width="10%">Trảng thái</th>
             <th width="5%">Xem</th>
             <th width="5%">Sửa</th>
@@ -34,6 +35,7 @@
             <td>{{$key + 1}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
+            <td>{{$user?->phone?->value}}</td>
             <td>
                 <span class="badge bg-{{$user->status ? 'success': 'warning'}}">
                     {{$user->status ? 'Kích hoạt' : 'Chưa kích hoạt'}}

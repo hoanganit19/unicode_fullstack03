@@ -1,6 +1,9 @@
 @extends('layouts/main')
 @section('content')
 <h1>Thêm người dùng</h1>
+@if ($errors->any())
+<div class="alert alert-danger">Đã có lỗi xảy ra. Vui lòng kiểm tra lại</div>
+@endif
 <form action="" method="post">
     <div class="mb-3">
         <label for="">Tên</label>
@@ -13,6 +16,13 @@
         <label for="">Email</label>
         <input type="text" name="email" class="form-control" placeholder="Email..." value="{{old('email')}}" />
         @error('email')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
+    </div>
+    <div class="mb-3">
+        <label for="">Điện thoại</label>
+        <input type="text" name="phone" class="form-control" placeholder="Điện thoại..." value="{{old('phone')}}" />
+        @error('phone')
         <span class="text-danger">{{$message}}</span>
         @enderror
     </div>

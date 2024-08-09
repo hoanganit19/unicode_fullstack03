@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PhoneController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,5 +14,8 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit']);
 Route::post('/users/{user}/edit', [UserController::class, 'update']);
 Route::post('/users/{user}/delete', [UserController::class, 'delete']);
 Route::post('/users/deletes', [UserController::class, 'deletes']);
+
+Route::get('/phones', [PhoneController::class, 'index']);
+Route::get('/phones/{phone}/view', [PhoneController::class, 'view']);
 
 //Request ==> public/index.php ==> bootstrap ==> Provider ==> Middleware ==> Route ==> Middleware ==> Controller ==> Action ==> View
