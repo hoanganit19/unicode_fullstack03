@@ -5,4 +5,8 @@
 <p>Email: {{$user->email}}</p>
 <p>Thời gian tạo: {{$user->created_at}}</p>
 <p>Thời gian cập nhật: {{$user->updated_at}}</p>
+<h3>Danh sách bài viết</h3>
+@foreach ($user->posts as $post)
+    <p><a href="{{route('posts.view', $post)}}">{{$post->title}}</a></p>
+@endforeach
 @endsection

@@ -20,6 +20,13 @@
         @enderror
     </div>
     <div class="mb-3">
+        <label for="">Điện thoại</label>
+        <input type="text" name="phone" class="form-control" placeholder="Phone..." value="{{$user->phone?->value}}" />
+        @error('phone')
+        <span class="text-danger">{{$message}}</span>
+        @enderror
+    </div>
+    <div class="mb-3">
         <label for="">Mật khẩu</label>
         <input type="password" name="password" class="form-control" placeholder="Mật khẩu..." />
         @error('password')

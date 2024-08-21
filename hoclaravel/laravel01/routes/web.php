@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhoneController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,5 +18,7 @@ Route::post('/users/deletes', [UserController::class, 'deletes']);
 
 Route::get('/phones', [PhoneController::class, 'index']);
 Route::get('/phones/{phone}/view', [PhoneController::class, 'view']);
+Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts/{post}/view', [PostController::class, 'view'])->name('posts.view');
 
 //Request ==> public/index.php ==> bootstrap ==> Provider ==> Middleware ==> Route ==> Middleware ==> Controller ==> Action ==> View

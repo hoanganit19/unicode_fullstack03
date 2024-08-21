@@ -78,29 +78,6 @@ class UserController extends Controller
 
     public function update(UserRequest $request, User $user)
     {
-        //Validate
-        // $rules = [
-        //     'name' => 'required|min:3',
-        //     'email' => 'required|email|unique:users,email,' . $user->id,
-        // ];
-
-        // if ($request->password) {
-        //     $rules['password'] = 'required|min:6';
-        //     $rules['confirm_password'] = 'required|same:password';
-        // }
-
-        // $request->validate($rules, [
-        //     'required' => ':attribute bắt buộc phải nhập',
-        //     'min' => ':attribute phải từ :min ký tự',
-        //     'email' => ':attribute không đúng định dạng email',
-        //     'unique' => ':attribute đã tồn tại trên hệ thống',
-        //     'same' => ':attribute không khớp với mật khẩu',
-        // ], [
-        //     'name' => "Tên",
-        //     'email' => 'Địa chỉ email',
-        //     'password' => 'Mật khẩu',
-        //     'confirm_password' => 'Nhập lại mật khẩu',
-        // ]);
         //Xử lý
         $name = $request->name;
         $email = $request->email;
@@ -111,10 +88,17 @@ class UserController extends Controller
             $user->password = Hash::make($password);
         }
         $user->save();
+        $phone = $user->phone;
+        if (!$phone) {
+            $phone = new Phone();
+        }
+        $phone->value = $request->phone;
+        $user->phone()->save($phone);
         return redirect('/users/' . $user->id . '/edit')->with('msg', 'Cập nhật thành công');
     }
     public function delete(User $user)
     {
+        $user->phone->delete();
         $user->delete();
         return redirect('/users')->with('msg', 'Xóa thành công');
     }
@@ -134,3 +118,8 @@ class UserController extends Controller
 
 //TenClass $tenobject ==> Dependency Injection (DI)
 //$user = new User;
+
+//Tạo trang chi tiết post thể hiện các thông tin sau
+// - Tiêu đề
+// - Nội dung
+// - Tên người dùng
