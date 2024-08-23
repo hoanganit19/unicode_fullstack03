@@ -15,10 +15,14 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit']);
 Route::post('/users/{user}/edit', [UserController::class, 'update']);
 Route::post('/users/{user}/delete', [UserController::class, 'delete']);
 Route::post('/users/deletes', [UserController::class, 'deletes']);
+Route::get('/users/{user}/courses', [UserController::class, 'changeCourses']);
 
 Route::get('/phones', [PhoneController::class, 'index']);
 Route::get('/phones/{phone}/view', [PhoneController::class, 'view']);
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{post}/view', [PostController::class, 'view'])->name('posts.view');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts/create', [PostController::class, 'store']);
+
 
 //Request ==> public/index.php ==> bootstrap ==> Provider ==> Middleware ==> Route ==> Middleware ==> Controller ==> Action ==> View

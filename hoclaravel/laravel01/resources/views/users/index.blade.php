@@ -21,6 +21,7 @@
             <th>Email</th>
             <th>Điện thoại</th>
             <th width="10%">Trảng thái</th>
+            <th width="10%">Khóa học</th>
             <th width="5%">Xem</th>
             <th width="5%">Sửa</th>
             <th width="5%">Xóa</th>
@@ -40,6 +41,9 @@
                 <span class="badge bg-{{$user->status ? 'success': 'warning'}}">
                     {{$user->status ? 'Kích hoạt' : 'Chưa kích hoạt'}}
                 </span>
+            </td>
+            <td>
+                <a href="/users/{{$user->id}}/courses" class="btn btn-primary">Thay đổi</a>
             </td>
             <td><a href="/users/{{$user->id}}/view" class="btn btn-primary">Xem</a></td>
             <td>

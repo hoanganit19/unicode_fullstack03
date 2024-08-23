@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Phone;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Models\Course;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -113,6 +114,14 @@ class UserController extends Controller
         User::whereIn('id', $ids)->delete();
 
         return redirect('/users')->with('msg', 'Đã xóa ' . count($ids) . ' người dùng');
+    }
+
+    public function changeCourses(User $user)
+    {
+        $courses = Course::all();
+        $userCourses = $user->courses->map(fn($course) => $course->id)->toArray();
+
+        return view('users.courses', compact('user', 'courses', 'userCourses'));
     }
 }
 

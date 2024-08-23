@@ -9,4 +9,8 @@
 @foreach ($user->posts as $post)
     <p><a href="{{route('posts.view', $post)}}">{{$post->title}}</a></p>
 @endforeach
+<h3>Danh sách khóa học</h3>
+@foreach ($user->courses as $course)
+<p>{{$course->name}}</p>
+@endforeach
 @endsection
