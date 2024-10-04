@@ -9,6 +9,7 @@ export default function UserEdit({
 }) {
     const [form, setForm] = useState({});
 
+    const token = localStorage.getItem("token") ?? "";
     const handleClose = () => {
         setForm({});
         setEditModalStatus(false);
@@ -17,7 +18,15 @@ export default function UserEdit({
     useEffect(() => {
         const getUser = async () => {
             if (!id) return;
-            const response = await fetch(`/api/users/${id}`);
+            const response = await fetch(`/api/users/${id}`, {
+                headers: {
+                    Accept: "application/json",
+                    Authorization: "Bearer " + token,
+                },
+            });
+            if (response.status === 401) {
+                return (window.location.href = "/dang-nhap");
+            }
             const user = await response.json();
             if (user.success) {
                 setForm(user.data);
@@ -33,9 +42,14 @@ export default function UserEdit({
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+                Accept: "application/json",
             },
             body: JSON.stringify(form),
         });
+        if (response.status === 401) {
+            return (window.location.href = "/dang-nhap");
+        }
         if (response.ok) {
             setEditModalStatus(false);
             setForm({});

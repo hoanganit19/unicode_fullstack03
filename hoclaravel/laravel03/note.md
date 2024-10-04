@@ -37,5 +37,19 @@ HTTP DELETE http://127.0.0.1:8000/api/users/1 ==> Xóa user có id bằng 1
 ## Xác thực
 
 -   Sanctum
--   Passport
+-   Passport ==> OAuth 2.0
 -   JWT
+
+Request Authentication ==> Kiểm tra database
+
+-   Thất bại: Trả về lỗi
+-   Thành công:
+
+*   Web: Tạo session ==> Trả về cookie chứa session-id
+*   API: Tạo token ==> Trả về token
+
+Sanctum: Token sẽ là chuỗi ngẫu nhiên và lưu ở phía Database + Trả về cho phía Front-End
+
+Request Authorization ==> Gửi kèm Header ==> Authorization: Bearer token
+
+Sanctum: Có sẵn 1 middleware để parse token và trả về thông tin

@@ -15,13 +15,19 @@ export default function UserAdd({ modalStatus, setModalStatus, getUsers }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const token = localStorage.getItem("token") ?? "";
         const response = await fetch("/api/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+                Accept: "application/json",
             },
             body: JSON.stringify(form),
         });
+        if (response.status === 401) {
+            return (window.location.href = "/dang-nhap");
+        }
         if (response.ok) {
             setModalStatus(false);
             setForm({});
